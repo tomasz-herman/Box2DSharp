@@ -4,6 +4,12 @@ using Box2D.Id;
 
 namespace Box2D.Types.Joints;
 
+/// <summary>
+/// A mouse joint is used to make a point on a body track a specified world point.
+///
+/// This a soft constraint and allows the constraint to stretch without
+/// applying huge forces. This also applies rotation constraint heuristic to improve control.
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MouseJointDef
 {

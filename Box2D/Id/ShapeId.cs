@@ -1,5 +1,8 @@
 namespace Box2D.Id;
 
+/// <summary>
+/// Shape id references a shape instance. This should be treated as an opaque handle.
+/// </summary>
 public struct ShapeId
 {
     private int _index;

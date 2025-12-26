@@ -3,6 +3,10 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Types;
 
+/// <summary>
+/// The explosion definition is used to configure options for explosions. Explosions
+/// consider shape geometry when computing the impulse.
+/// </summary>
 public struct ExplosionDef
 {
     public ulong MaskBits;

@@ -1,5 +1,8 @@
 namespace Box2D.Types;
 
+/// <summary>
+/// Profiling data. Times are in milliseconds.
+/// </summary>
 public struct Profile
 {
     public float Step;

@@ -1,5 +1,8 @@
 namespace Box2D.Id;
 
+/// <summary>
+/// Chain id references a chain instances. This should be treated as an opaque handle.
+/// </summary>
 public struct ChainId
 {
     private int _index;

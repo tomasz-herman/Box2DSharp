@@ -3,6 +3,9 @@ using Box2D.Id;
 
 namespace Box2D.Types.Joints;
 
+/// <summary>
+/// A filter joint is used to disable collision between two specific bodies.
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct FilterJointDef
 {

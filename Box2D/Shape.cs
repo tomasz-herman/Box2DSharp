@@ -40,209 +40,387 @@ public unsafe class Shape : IDisposable
         _id = id;
     }
 
+    /// <summary>
+    /// Shape identifier validation. Provides validation for up to 64K allocations.
+    /// </summary>
     public bool IsValid()
     {
         return Shape_IsValid(_id);
     }
 
+    /// <summary>
+    /// Get the type of a shape
+    /// </summary>
     public new ShapeType GetType()
     {
         return Shape_GetType(_id);
     }
 
+    /// <summary>
+    /// Get the id of the body that a shape is attached to
+    /// </summary>
     public BodyId GetBody()
     {
         return Shape_GetBody(_id);
     }
 
+    /// <summary>
+    /// Get the world that owns this shape
+    /// </summary>
     public WorldId GetWorld()
     {
         return Shape_GetWorld(_id);
     }
 
+    /// <summary>
+    /// Returns true if the shape is a sensor. It is not possible to change a shape
+    /// from sensor to solid dynamically because this breaks the contract for
+    /// sensor events.
+    /// </summary>
     public bool IsSensor()
     {
         return Shape_IsSensor(_id);
     }
 
+    /// <summary>
+    /// Set the user data for a shape
+    /// </summary>
     public void SetUserData(void* userData)
     {
         Shape_SetUserData(_id, userData);
     }
 
+    /// <summary>
+    /// Get the user data for a shape. This is useful when you get a shape id
+    /// from an event or query.
+    /// </summary>
     public void* GetUserData()
     {
         return Shape_GetUserData(_id);
     }
 
+    /// <summary>
+    /// Set the mass density of a shape, usually in kg/m^2.
+    /// This will optionally update the mass properties on the parent body.
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.ShapeDef.Density"/>
+    /// <seealso cref="Box2D.Body.ApplyMassFromShapes"/>
     public void SetDensity(float density, bool updateBodyMass)
     {
         Shape_SetDensity(_id, density, updateBodyMass);
     }
 
+    /// <summary>
+    /// Get the density of a shape, usually in kg/m^2
+    /// </summary>
     public float GetDensity()
     {
         return Shape_GetDensity(_id);
     }
 
+    /// <summary>
+    /// Set the friction on a shape
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.SurfaceMaterial.Friction"/>
     public void SetFriction(float friction)
     {
         Shape_SetFriction(_id, friction);
     }
 
+    /// <summary>
+    /// Get the friction of a shape
+    /// </summary>
     public float GetFriction()
     {
         return Shape_GetFriction(_id);
     }
 
+    /// <summary>
+    /// Set the shape restitution (bounciness)
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.SurfaceMaterial.Restitution"/>
     public void SetRestitution(float restitution)
     {
         Shape_SetRestitution(_id, restitution);
     }
 
+    /// <summary>
+    /// Get the shape restitution
+    /// </summary>
     public float GetRestitution()
     {
         return Shape_GetRestitution(_id);
     }
 
+    /// <summary>
+    /// Set the shape material identifier
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.ShapeDef.Material"/>
     public void SetUserMaterial(ulong material)
     {
         Shape_SetUserMaterial(_id, material);
     }
 
+    /// <summary>
+    /// Get the shape material identifier
+    /// </summary>
     public ulong GetUserMaterial()
     {
         return Shape_GetUserMaterial(_id);
     }
 
+    /// <summary>
+    /// Set the shape surface material
+    /// </summary>
     public void SetSurfaceMaterial(ref SurfaceMaterial surfaceMaterial)
     {
         Shape_SetSurfaceMaterial(_id, ref surfaceMaterial);
     }
 
+    /// <summary>
+    /// Get the shape surface material
+    /// </summary>
     public SurfaceMaterial GetSurfaceMaterial()
     {
         return Shape_GetSurfaceMaterial(_id);
     }
 
+    /// <summary>
+    /// Get the shape filter
+    /// </summary>
     public Filter GetFilter()
     {
         return Shape_GetFilter(_id);
     }
 
+    /// <summary>
+    /// Set the current filter. This is almost as expensive as recreating the shape. This may cause
+    /// contacts to be immediately destroyed. However contacts are not created until the next world step.
+    /// Sensor overlap state is also not updated until the next world step.
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.ShapeDef.Filter"/>
     public void SetFilter(Filter filter)
     {
         Shape_SetFilter(_id, filter);
     }
 
+    /// <summary>
+    /// Enable sensor events for this shape.
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.ShapeDef.EnableSensorEvents"/>
     public void EnableSensorEvents(bool flag)
     {
         Shape_EnableSensorEvents(_id, flag);
     }
 
+    /// <summary>
+    /// Returns true if sensor events are enabled.
+    /// </summary>
     public bool AreSensorEventsEnabled()
     {
         return Shape_AreSensorEventsEnabled(_id);
     }
 
+    /// <summary>
+    /// Enable contact events for this shape. Only applies to kinematic and dynamic bodies. Ignored for sensors.
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.ShapeDef.EnableContactEvents"/>
+    /// <remarks>
+    /// Warning: changing this at run-time may lead to lost begin/end events
+    /// </remarks>
     public void EnableContactEvents(bool flag)
     {
         Shape_EnableContactEvents(_id, flag);
     }
 
+    /// <summary>
+    /// Returns true if contact events are enabled
+    /// </summary>
     public bool AreContactEventsEnabled()
     {
         return Shape_AreContactEventsEnabled(_id);
     }
 
+    /// <summary>
+    /// Enable pre-solve contact events for this shape. Only applies to dynamic bodies. These are expensive
+    /// and must be carefully handled due to multithreading. Ignored for sensors.
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Callbacks.PreSolveFcn"/>
     public void EnablePreSolveEvents(bool flag)
     {
         Shape_EnablePreSolveEvents(_id, flag);
     }
 
+    /// <summary>
+    /// Returns true if pre-solve events are enabled
+    /// </summary>
     public bool ArePreSolveEventsEnabled()
     {
         return Shape_ArePreSolveEventsEnabled(_id);
     }
 
+    /// <summary>
+    /// Enable contact hit events for this shape. Ignored for sensors.
+    /// </summary>
+    /// <seealso cref="Box2D.Types.WorldDef.HitEventThreshold"/>
     public void EnableHitEvents(bool flag)
     {
         Shape_EnableHitEvents(_id, flag);
     }
 
+    /// <summary>
+    /// Returns true if hit events are enabled
+    /// </summary>
     public bool AreHitEventsEnabled()
     {
         return Shape_AreHitEventsEnabled(_id);
     }
 
+    /// <summary>
+    /// Test a point for overlap with a shape
+    /// </summary>
     public bool TestPoint(Vector2 point)
     {
         return Shape_TestPoint(_id, point);
     }
 
+    /// <summary>
+    /// Ray cast a shape directly
+    /// </summary>
     public CastOutput RayCast(ref RayCastInput input)
     {
         return Shape_RayCast(_id, ref input);
     }
 
+    /// <summary>
+    /// Get a copy of the shape's circle. Asserts the type is correct.
+    /// </summary>
     public Circle GetCircle()
     {
         return Shape_GetCircle(_id);
     }
 
+    /// <summary>
+    /// Get a copy of the shape's line segment. Asserts the type is correct.
+    /// </summary>
     public Segment GetSegment()
     {
         return Shape_GetSegment(_id);
     }
 
+    /// <summary>
+    /// Get a copy of the shape's chain segment. These come from chain shapes.
+    /// Asserts the type is correct.
+    /// </summary>
     public ChainSegment GetChainSegment()
     {
         return Shape_GetChainSegment(_id);
     }
 
+    /// <summary>
+    /// Get a copy of the shape's capsule. Asserts the type is correct.
+    /// </summary>
     public Capsule GetCapsule()
     {
         return Shape_GetCapsule(_id);
     }
 
+    /// <summary>
+    /// Get a copy of the shape's convex polygon. Asserts the type is correct.
+    /// </summary>
     public Polygon GetPolygon()
     {
         return Shape_GetPolygon(_id);
     }
 
+    /// <summary>
+    /// Allows you to change a shape to be a circle or update the current circle.
+    /// This does not modify the mass properties.
+    /// </summary>
+    /// <seealso cref="Box2D.Body.ApplyMassFromShapes"/>
     public void SetCircle(ref Circle circle)
     {
         Shape_SetCircle(_id, ref circle);
     }
 
+    /// <summary>
+    /// Allows you to change a shape to be a capsule or update the current capsule.
+    /// This does not modify the mass properties.
+    /// </summary>
+    /// <seealso cref="Box2D.Body.ApplyMassFromShapes"/>
     public void SetCapsule(ref Capsule capsule)
     {
         Shape_SetCapsule(_id, ref capsule);
     }
 
+    /// <summary>
+    /// Allows you to change a shape to be a segment or update the current segment.
+    /// </summary>
     public void SetSegment(ref Segment segment)
     {
         Shape_SetSegment(_id, ref segment);
     }
 
+    /// <summary>
+    /// Allows you to change a shape to be a polygon or update the current polygon.
+    /// This does not modify the mass properties.
+    /// </summary>
+    /// <seealso cref="Box2D.Body.ApplyMassFromShapes"/>
     public void SetPolygon(ref Polygon polygon)
     {
         Shape_SetPolygon(_id, ref polygon);
     }
 
+    /// <summary>
+    /// Get the parent chain id if the shape type is a chain segment, otherwise
+    /// returns b2_nullChainId.
+    /// </summary>
     public ChainId GetParentChain()
     {
         return Shape_GetParentChain(_id);
     }
 
+    /// <summary>
+    /// Get the maximum capacity required for retrieving all the touching contacts on a shape
+    /// </summary>
     public int GetContactCapacity()
     {
         return Shape_GetContactCapacity(_id);
     }
 
+    /// <summary>
+    /// Get the touching contact data for a shape. The provided shapeId will be either shapeIdA or shapeIdB on the contact data.
+    /// </summary>
+    /// <remarks>
+    /// Note: Box2D uses speculative collision so some contact points may be separated.
+    /// Warning: do not ignore the return value, it specifies the valid number of elements
+    /// </remarks>
+    /// <returns>the number of elements filled in the provided array</returns>
     public int GetContactData(ContactData* contactData, int capacity)
     {
         return Shape_GetContactData(_id, contactData, capacity);
+    }
+
+    /// <summary>
+    /// Get the maximum capacity required for retrieving all the overlapped shapes on a sensor shape.
+    /// This returns 0 if the provided shape is not a sensor.
+    /// </summary>
+    /// <returns>the required capacity to get all the overlaps in b2Shape_GetSensorOverlaps</returns>
+    /// <summary>
+    /// Set the shape material identifier
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.ShapeDef.Material"/>
+    public void SetMaterial(int material)
+    {
+        Shape_SetMaterial(_id, material);
+    }
+
+    /// <summary>
+    /// Get the shape material identifier
+    /// </summary>
+    public int GetMaterial()
+    {
+        return Shape_GetMaterial(_id);
     }
 
     public int GetSensorCapacity()
@@ -250,21 +428,40 @@ public unsafe class Shape : IDisposable
         return Shape_GetSensorCapacity(_id);
     }
 
-    public int GetSensorData(ShapeId* visitorIds, int capacity)
+    /// <summary>
+    /// Get the overlapped shapes for a sensor shape.
+    /// </summary>
+    /// <param name="visitorIds">a user allocated array that is filled with the overlapping shapes</param>
+    /// <param name="capacity">the capacity of overlappedShapes</param>
+    /// <returns>the number of elements filled in the provided array</returns>
+    /// <remarks>
+    /// Warning: do not ignore the return value, it specifies the valid number of elements
+    /// Warning: overlaps may contain destroyed shapes so use b2Shape_IsValid to confirm each overlap
+    /// </remarks>
+    public int GetSensorOverlaps(ShapeId* visitorIds, int capacity)
     {
-        return Shape_GetSensorData(_id, visitorIds, capacity);
+        return Shape_GetSensorOverlaps(_id, visitorIds, capacity);
     }
 
-    public Aabb GetAABB()
+    /// <summary>
+    /// Get the current world AABB
+    /// </summary>
+    public Aabb GetAabb()
     {
         return Shape_GetAabb(_id);
     }
 
-    public MassData ComputeMassData()
+    /// <summary>
+    /// Get the mass data for a shape
+    /// </summary>
+    public MassData GetMassData()
     {
-        return Shape_ComputeMassData(_id);
+        return Shape_GetMassData(_id);
     }
 
+    /// <summary>
+    /// Get the closest point on a shape to a target point. Target and result are in world space.
+    /// </summary>
     public Vector2 GetClosestPoint(Vector2 target)
     {
         return Shape_GetClosestPoint(_id, target);
@@ -332,6 +529,12 @@ public unsafe class Shape : IDisposable
 
     [DllImport("box2d", EntryPoint = "b2Shape_GetRestitution")]
     private static extern float Shape_GetRestitution(ShapeId shapeId);
+
+    [DllImport("box2d", EntryPoint = "b2Shape_SetMaterial")]
+    private static extern void Shape_SetMaterial(ShapeId shapeId, int material);
+
+    [DllImport("box2d", EntryPoint = "b2Shape_GetMaterial")]
+    private static extern int Shape_GetMaterial(ShapeId shapeId);
 
     [DllImport("box2d", EntryPoint = "b2Shape_SetUserMaterial")]
     private static extern void Shape_SetUserMaterial(ShapeId shapeId, ulong material);
@@ -425,14 +628,14 @@ public unsafe class Shape : IDisposable
     [DllImport("box2d", EntryPoint = "b2Shape_GetSensorCapacity")]
     private static extern int Shape_GetSensorCapacity(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetSensorData")]
-    private static extern int Shape_GetSensorData(ShapeId shapeId, ShapeId* visitorIds, int capacity);
+    [DllImport("box2d", EntryPoint = "b2Shape_GetSensorOverlaps")]
+    private static extern int Shape_GetSensorOverlaps(ShapeId shapeId, ShapeId* visitorIds, int capacity);
 
     [DllImport("box2d", EntryPoint = "b2Shape_GetAABB")]
     private static extern Aabb Shape_GetAabb(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_ComputeMassData")]
-    private static extern MassData Shape_ComputeMassData(ShapeId shapeId);
+    [DllImport("box2d", EntryPoint = "b2Shape_GetMassData")]
+    private static extern MassData Shape_GetMassData(ShapeId shapeId);
 
     [DllImport("box2d", EntryPoint = "b2Shape_GetClosestPoint")]
     private static extern Vector2 Shape_GetClosestPoint(ShapeId shapeId, Vector2 target);

@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Result of computing the distance between two line segments
+/// </summary>
 public struct SegmentDistanceResult
 {
     public Vector2 Closest1;

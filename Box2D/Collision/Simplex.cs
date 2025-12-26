@@ -2,6 +2,9 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Simplex from the GJK algorithm
+/// </summary>
 public unsafe struct Simplex
 {
     public SimplexVertex V1, V2, V3;

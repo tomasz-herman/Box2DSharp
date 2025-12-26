@@ -2,6 +2,12 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Types.Shapes;
 
+/// <summary>
+/// Used to create a shape.
+/// This is a temporary object used to bundle shape creation parameters. You may use
+/// the same shape definition to create multiple shapes.
+/// Must be initialized using b2DefaultShapeDef().
+/// </summary>
 public unsafe struct ShapeDef
 {
     public void* UserData;

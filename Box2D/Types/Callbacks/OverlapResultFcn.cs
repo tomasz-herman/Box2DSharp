@@ -2,6 +2,11 @@ using Box2D.Id;
 
 namespace Box2D.Types.Callbacks;
 
+/// <summary>
+/// Prototype for a overlap callback.
+/// </summary>
+/// <remarks>See b2World_OverlapABB</remarks>
+/// <returns>false to terminate the query.</returns>
 public readonly unsafe struct OverlapResultFcn(delegate*<ShapeId, void*, bool> ptr)
 {
     private readonly delegate*<ShapeId, void*, bool> _ptr = ptr;

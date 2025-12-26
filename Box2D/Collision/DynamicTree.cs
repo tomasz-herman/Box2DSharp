@@ -4,6 +4,11 @@ using Box2D.Math;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// The dynamic tree structure. This should be considered private data.
+/// It is placed here for performance reasons.
+/// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public unsafe class DynamicTree : IDisposable
 {
     public void* Nodes;

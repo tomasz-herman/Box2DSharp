@@ -1,5 +1,10 @@
 namespace Box2D.Base;
 
+/// <summary>
+/// Prototype for user allocation function
+/// </summary>
+/// <param name="size">the allocation size in bytes</param>
+/// <param name="alignment">the required alignment, guaranteed to be a power of 2</param>
 public unsafe struct AllocFcn(delegate*<uint, int, void*> ptr)
 {
     private readonly delegate*<uint, int, void*> _ptr = ptr;

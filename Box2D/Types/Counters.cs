@@ -1,5 +1,8 @@
 namespace Box2D.Types;
 
+/// <summary>
+/// Counters that give details of the simulation size.
+/// </summary>
 public unsafe struct Counters
 {
     public int BodyCount;

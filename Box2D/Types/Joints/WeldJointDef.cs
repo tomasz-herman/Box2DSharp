@@ -4,6 +4,12 @@ using Box2D.Id;
 
 namespace Box2D.Types.Joints;
 
+/// <summary>
+/// A weld joint connects to bodies with fixed relative transform.
+/// </summary>
+/// <remarks>
+/// Note: The approximate solver in Box2D cannot hold many bodies together rigidly
+/// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct WeldJointDef
 {

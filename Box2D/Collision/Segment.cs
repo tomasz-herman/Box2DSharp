@@ -4,6 +4,9 @@ using Box2D.Math;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// A line segment with two-sided collision.
+/// </summary>
 public struct Segment
 {
     public Vector2 Point1;

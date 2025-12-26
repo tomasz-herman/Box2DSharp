@@ -1,13 +1,20 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Box2D.Math;
 
 namespace Box2D.Types.Bodies;
 
+/// <summary>
+/// A body definition holds all the data needed to construct a rigid body.
+/// You can safely re-use body definitions. Shapes are added to a body after construction.
+/// Body definitions are temporary objects used to bundle creation parameters.
+/// Must be initialized using b2DefaultBodyDef().
+/// </summary>
 public unsafe struct BodyDef
 {
     public BodyType Type;
     public Vector2 Position;
-    public Vector2 Rotation;
+    public Rotation Rotation;
     public Vector2 LinearVelocity;
     public float AngularVelocity;
     public float LinearDamping;

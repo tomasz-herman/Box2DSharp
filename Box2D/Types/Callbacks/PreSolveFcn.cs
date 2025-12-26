@@ -3,6 +3,12 @@ using Box2D.Id;
 
 namespace Box2D.Types.Callbacks;
 
+/// <summary>
+/// Prototype for a pre-solve callback.
+/// </summary>
+/// <remarks>
+/// Warning: Do not attempt to modify the world inside this callback
+/// </remarks>
 public readonly unsafe struct PreSolveFcn(delegate*<ShapeId, ShapeId, Vector2, Vector2, void*, bool> ptr)
 {
     private readonly delegate*<ShapeId, ShapeId, Vector2, Vector2, void*, bool> _ptr = ptr;

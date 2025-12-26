@@ -4,6 +4,12 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// A convex hull. Used to create convex polygons.
+/// </summary>
+/// <remarks>
+/// Warning: Do not modify these values directly, instead use b2ComputeHull()
+/// </remarks>
 public unsafe struct Hull
 {
     [InlineArray(8)]

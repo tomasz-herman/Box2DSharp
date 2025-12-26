@@ -2,6 +2,12 @@ using Box2D.Id;
 
 namespace Box2D.Types.Events;
 
+/// <summary>
+/// An end touch event is generated when two shapes stop touching.
+///     You will get an end event if you do anything that destroys contacts previous to the last
+///     world step. These include things like setting the transform, destroying a body
+///     or shape, or changing a filter or body type.
+/// </summary>
 public struct ContactEndTouchEvent
 {
     public ShapeId ShapeIdA;

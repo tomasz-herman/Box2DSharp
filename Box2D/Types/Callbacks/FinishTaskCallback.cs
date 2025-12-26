@@ -1,5 +1,8 @@
 namespace Box2D.Types.Callbacks;
 
+/// <summary>
+/// These are thread-safe and can be used to synchronize tasks.
+/// </summary>
 public readonly unsafe struct FinishTaskCallback(delegate*<void*, void*, void> ptr)
 {
     private readonly delegate*<void*, void*, void> _ptr = ptr;

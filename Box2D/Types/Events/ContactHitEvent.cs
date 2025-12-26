@@ -3,6 +3,10 @@ using Box2D.Id;
 
 namespace Box2D.Types.Events;
 
+/// <summary>
+/// A hit touch event is generated when two shapes collide with a speed faster than the hit speed threshold.
+/// This may be reported for speculative contacts that have a confirmed impulse.
+/// </summary>
 public struct ContactHitEvent
 {
     public ShapeId ShapeIdA;

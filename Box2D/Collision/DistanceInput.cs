@@ -3,6 +3,9 @@ using Box2D.Math;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Input for b2ShapeDistance
+/// </summary>
 public struct DistanceInput
 {
     public ShapeProxy ProxyA;

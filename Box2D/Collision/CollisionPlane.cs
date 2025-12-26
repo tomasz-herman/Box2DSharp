@@ -4,6 +4,10 @@ using Plane = Box2D.Math.Plane;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// These are collision planes that can be fed to b2SolvePlanes. Normally
+/// this is assembled by the user from plane results in b2PlaneResult
+/// </summary>
 public unsafe struct CollisionPlane
 {
     public Plane Plane;

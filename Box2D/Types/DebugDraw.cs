@@ -4,6 +4,9 @@ using Box2D.Math;
 
 namespace Box2D.Types;
 
+/// <summary>
+/// This struct holds callbacks you can implement to draw the Box2D world.
+/// </summary>
 public unsafe struct DebugDraw
 {
     public delegate*<Vector2*, int, HexColor, void*, void> DrawPolygonFcn;
@@ -11,7 +14,7 @@ public unsafe struct DebugDraw
     public delegate*<Vector2, float, HexColor, void*, void> DrawCircleFcn;
     public delegate*<Transform, Vector2, float, HexColor, void*, void> DrawSolidCircleFcn;
     public delegate*<Vector2, Vector2, float, HexColor, void*, void> DrawSolidCapsuleFcn;
-    public delegate*<Vector2, Vector2, HexColor, void*, void> DrawLineFcn;
+    public delegate*<Vector2, Vector2, HexColor, void*, void> DrawSegmentFcn;
     public delegate*<Transform, void*, void> DrawTransformFcn;
     public delegate*<Vector2, float, HexColor, void*, void> DrawPointFcn;
     public delegate*<Vector2, byte*, HexColor, void*, void> DrawStringFcn;

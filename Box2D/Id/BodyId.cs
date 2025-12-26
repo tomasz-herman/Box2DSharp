@@ -1,5 +1,8 @@
 namespace Box2D.Id;
 
+/// <summary>
+/// Body id references a body instance. This should be treated as an opaque handle.
+/// </summary>
 public struct BodyId
 {
     private int _index;

@@ -4,6 +4,10 @@ using Box2D.Math;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// A solid capsule can be viewed as two semicircles connected
+/// by a rectangle.
+/// </summary>
 public struct Capsule
 {
     public Vector2 Center1;

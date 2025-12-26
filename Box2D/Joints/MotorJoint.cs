@@ -11,101 +11,82 @@ public unsafe class MotorJoint : Joint
     {
     }
 
-    public void SetLinearVelocity(Vector2 velocity)
+    /// <summary>
+    /// Set the motor joint linear offset target
+    /// </summary>
+    public void SetLinearOffset(Vector2 linearOffset)
     {
-        MotorJoint_SetLinearVelocity(_id, velocity);
+        MotorJoint_SetLinearOffset(_id, linearOffset);
     }
 
-    public Vector2 GetLinearVelocity()
+    /// <summary>
+    /// Get the motor joint linear offset target
+    /// </summary>
+    public Vector2 GetLinearOffset()
     {
-        return MotorJoint_GetLinearVelocity(_id);
+        return MotorJoint_GetLinearOffset(_id);
     }
 
-    public void SetAngularVelocity(float velocity)
+    /// <summary>
+    /// Set the motor joint angular offset target in radians. This angle will be unwound
+    /// so the motor will drive along the shortest arc.
+    /// </summary>
+    public void SetAngularOffset(float angularOffset)
     {
-        MotorJoint_SetAngularVelocity(_id, velocity);
+        MotorJoint_SetAngularOffset(_id, angularOffset);
     }
 
-    public float GetAngularVelocity()
+    /// <summary>
+    /// Get the motor joint angular offset target in radians
+    /// </summary>
+    public float GetAngularOffset()
     {
-        return MotorJoint_GetAngularVelocity(_id);
+        return MotorJoint_GetAngularOffset(_id);
     }
 
-    public void SetMaxVelocityForce(float maxForce)
+    /// <summary>
+    /// Set the motor joint correction factor, usually in [0, 1]
+    /// </summary>
+    public void SetCorrectionFactor(float correctionFactor)
     {
-        MotorJoint_SetMaxVelocityForce(_id, maxForce);
+        MotorJoint_SetCorrectionFactor(_id, correctionFactor);
     }
 
-    public float GetMaxVelocityForce()
+    /// <summary>
+    /// Get the motor joint correction factor, usually in [0, 1]
+    /// </summary>
+    public float GetCorrectionFactor()
     {
-        return MotorJoint_GetMaxVelocityForce(_id);
+        return MotorJoint_GetCorrectionFactor(_id);
     }
 
-    public void SetMaxVelocityTorque(float maxTorque)
-    {
-        MotorJoint_SetMaxVelocityTorque(_id, maxTorque);
-    }
-
-    public float GetMaxVelocityTorque()
-    {
-        return MotorJoint_GetMaxVelocityTorque(_id);
-    }
-
-    public void SetLinearHertz(float hertz)
-    {
-        MotorJoint_SetLinearHertz(_id, hertz);
-    }
-
-    public float GetLinearHertz()
-    {
-        return MotorJoint_GetLinearHertz(_id);
-    }
-
-    public void SetLinearDampingRatio(float damping)
-    {
-        MotorJoint_SetLinearDampingRatio(_id, damping);
-    }
-
-    public float GetLinearDampingRatio()
-    {
-        return MotorJoint_GetLinearDampingRatio(_id);
-    }
-
-    public void SetAngularHertz(float hertz)
-    {
-        MotorJoint_SetAngularHertz(_id, hertz);
-    }
-
-    public float GetAngularHertz()
-    {
-        return MotorJoint_GetAngularHertz(_id);
-    }
-
-    public void SetAngularDampingRatio(float damping)
-    {
-        MotorJoint_SetAngularDampingRatio(_id, damping);
-    }
-
-    public float GetAngularDampingRatio()
-    {
-        return MotorJoint_GetAngularDampingRatio(_id);
-    }
-
+    /// <summary>
+    /// Set the motor joint maximum force, usually in newtons
+    /// </summary>
     public void SetMaxForce(float maxForce)
     {
         MotorJoint_SetMaxForce(_id, maxForce);
     }
 
+    /// <summary>
+    /// Get the motor joint maximum force, usually in newtons
+    /// </summary>
     public float GetMaxForce()
     {
         return MotorJoint_GetMaxForce(_id);
     }
 
+    /// <summary>
+    /// Set the motor joint maximum torque, usually in newton-meters
+    /// </summary>
     public void SetMaxTorque(float maxTorque)
     {
         MotorJoint_SetMaxTorque(_id, maxTorque);
     }
 
+    /// <summary>
+    /// Get the motor joint maximum torque, usually in newton-meters
+    /// </summary>
     public float GetMaxTorque()
     {
         return MotorJoint_GetMaxTorque(_id);
@@ -116,53 +97,17 @@ public unsafe class MotorJoint : Joint
     [DllImport("box2d", EntryPoint = "b2CreateMotorJoint")]
     private static extern JointId CreateMotorJoint(WorldId worldId, ref MotorJointDef def);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetLinearVelocity")]
-    private static extern void MotorJoint_SetLinearVelocity(JointId jointId, Vector2 velocity);
+    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetLinearOffset")]
+    private static extern void MotorJoint_SetLinearOffset(JointId jointId, Vector2 linearOffset);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetLinearVelocity")]
-    private static extern Vector2 MotorJoint_GetLinearVelocity(JointId jointId);
+    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetLinearOffset")]
+    private static extern Vector2 MotorJoint_GetLinearOffset(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetAngularVelocity")]
-    private static extern void MotorJoint_SetAngularVelocity(JointId jointId, float velocity);
+    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetAngularOffset")]
+    private static extern void MotorJoint_SetAngularOffset(JointId jointId, float angularOffset);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetAngularVelocity")]
-    private static extern float MotorJoint_GetAngularVelocity(JointId jointId);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetMaxVelocityForce")]
-    private static extern void MotorJoint_SetMaxVelocityForce(JointId jointId, float maxForce);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetMaxVelocityForce")]
-    private static extern float MotorJoint_GetMaxVelocityForce(JointId jointId);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetMaxVelocityTorque")]
-    private static extern void MotorJoint_SetMaxVelocityTorque(JointId jointId, float maxTorque);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetMaxVelocityTorque")]
-    private static extern float MotorJoint_GetMaxVelocityTorque(JointId jointId);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetLinearHertz")]
-    private static extern void MotorJoint_SetLinearHertz(JointId jointId, float hertz);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetLinearHertz")]
-    private static extern float MotorJoint_GetLinearHertz(JointId jointId);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetLinearDampingRatio")]
-    private static extern void MotorJoint_SetLinearDampingRatio(JointId jointId, float damping);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetLinearDampingRatio")]
-    private static extern float MotorJoint_GetLinearDampingRatio(JointId jointId);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetAngularHertz")]
-    private static extern void MotorJoint_SetAngularHertz(JointId jointId, float hertz);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetAngularHertz")]
-    private static extern float MotorJoint_GetAngularHertz(JointId jointId);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetAngularDampingRatio")]
-    private static extern void MotorJoint_SetAngularDampingRatio(JointId jointId, float damping);
-
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetAngularDampingRatio")]
-    private static extern float MotorJoint_GetAngularDampingRatio(JointId jointId);
+    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetAngularOffset")]
+    private static extern float MotorJoint_GetAngularOffset(JointId jointId);
 
     [DllImport("box2d", EntryPoint = "b2MotorJoint_SetMaxForce")]
     private static extern void MotorJoint_SetMaxForce(JointId jointId, float maxForce);
@@ -175,6 +120,12 @@ public unsafe class MotorJoint : Joint
 
     [DllImport("box2d", EntryPoint = "b2MotorJoint_GetMaxTorque")]
     private static extern float MotorJoint_GetMaxTorque(JointId jointId);
+
+    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetCorrectionFactor")]
+    private static extern void MotorJoint_SetCorrectionFactor(JointId jointId, float correctionFactor);
+
+    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetCorrectionFactor")]
+    private static extern float MotorJoint_GetCorrectionFactor(JointId jointId);
 
     #endregion
 }

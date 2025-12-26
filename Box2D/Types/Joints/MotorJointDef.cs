@@ -4,6 +4,11 @@ using Box2D.Id;
 
 namespace Box2D.Types.Joints;
 
+/// <summary>
+/// A motor joint is used to control the relative motion between two bodies
+///
+/// A typical usage is to control the movement of a dynamic body with respect to the ground.
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MotorJointDef
 {

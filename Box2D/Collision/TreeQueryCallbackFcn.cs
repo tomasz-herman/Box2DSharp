@@ -1,5 +1,9 @@
 namespace Box2D.Collision;
 
+/// <summary>
+/// This function receives proxies found in the AABB query.
+/// </summary>
+/// <returns>true if the query should continue</returns>
 public readonly unsafe struct TreeQueryCallbackFcn(delegate*<int, ulong, void*, bool> ptr)
 {
     private readonly delegate*<int, ulong, void*, bool> _ptr = ptr;

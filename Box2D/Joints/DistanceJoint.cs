@@ -10,106 +10,171 @@ public unsafe class DistanceJoint : Joint
     {
     }
 
+    /// <summary>
+    /// Set the rest length of a distance joint
+    /// </summary>
+    /// <param name="length">The new distance joint length</param>
     public void SetLength(float length)
     {
         DistanceJoint_SetLength(_id, length);
     }
 
+    /// <summary>
+    /// Get the rest length of a distance joint
+    /// </summary>
     public float GetLength()
     {
         return DistanceJoint_GetLength(_id);
     }
 
+    /// <summary>
+    /// Enable/disable the distance joint spring. When disabled the distance joint is rigid.
+    /// </summary>
     public void EnableSpring(bool enableSpring)
     {
         DistanceJoint_EnableSpring(_id, enableSpring);
     }
 
+    /// <summary>
+    /// Is the distance joint spring enabled?
+    /// </summary>
     public bool IsSpringEnabled()
     {
         return DistanceJoint_IsSpringEnabled(_id);
     }
 
+    /// <summary>
+    /// Set the spring stiffness in Hertz
+    /// </summary>
     public void SetSpringHertz(float hertz)
     {
         DistanceJoint_SetSpringHertz(_id, hertz);
     }
 
+    /// <summary>
+    /// Set the spring damping ratio, non-dimensional
+    /// </summary>
     public void SetSpringDampingRatio(float dampingRatio)
     {
         DistanceJoint_SetSpringDampingRatio(_id, dampingRatio);
     }
 
+    /// <summary>
+    /// Get the spring Hertz
+    /// </summary>
     public float GetSpringHertz()
     {
         return DistanceJoint_GetSpringHertz(_id);
     }
 
+    /// <summary>
+    /// Get the spring damping ratio
+    /// </summary>
     public float GetSpringDampingRatio()
     {
         return DistanceJoint_GetSpringDampingRatio(_id);
     }
 
+    /// <summary>
+    /// Enable joint limit. The limit only works if the joint spring is enabled. Otherwise the joint is rigid
+    /// and the limit has no effect.
+    /// </summary>
     public void EnableLimit(bool enableLimit)
     {
         DistanceJoint_EnableLimit(_id, enableLimit);
     }
 
+    /// <summary>
+    /// Is the distance joint limit enabled?
+    /// </summary>
     public bool IsLimitEnabled()
     {
         return DistanceJoint_IsLimitEnabled(_id);
     }
 
+    /// <summary>
+    /// Set the minimum and maximum length parameters of a distance joint
+    /// </summary>
     public void SetLengthRange(float minLength, float maxLength)
     {
         DistanceJoint_SetLengthRange(_id, minLength, maxLength);
     }
 
+    /// <summary>
+    /// Get the distance joint minimum length
+    /// </summary>
     public float GetMinLength()
     {
         return DistanceJoint_GetMinLength(_id);
     }
 
+    /// <summary>
+    /// Get the distance joint maximum length
+    /// </summary>
     public float GetMaxLength()
     {
         return DistanceJoint_GetMaxLength(_id);
     }
 
+    /// <summary>
+    /// Get the current length of a distance joint
+    /// </summary>
     public float GetCurrentLength()
     {
         return DistanceJoint_GetCurrentLength(_id);
     }
 
+    /// <summary>
+    /// Enable/disable the distance joint motor
+    /// </summary>
     public void EnableMotor(bool enableMotor)
     {
         DistanceJoint_EnableMotor(_id, enableMotor);
     }
 
+    /// <summary>
+    /// Is the distance joint motor enabled?
+    /// </summary>
     public bool IsMotorEnabled()
     {
         return DistanceJoint_IsMotorEnabled(_id);
     }
 
+    /// <summary>
+    /// Set the distance joint motor speed, usually in meters per second
+    /// </summary>
     public void SetMotorSpeed(float motorSpeed)
     {
         DistanceJoint_SetMotorSpeed(_id, motorSpeed);
     }
 
+    /// <summary>
+    /// Get the distance joint motor speed, usually in meters per second
+    /// </summary>
     public float GetMotorSpeed()
     {
         return DistanceJoint_GetMotorSpeed(_id);
     }
 
+    /// <summary>
+    /// Set the distance joint maximum motor force, usually in newtons
+    /// </summary>
     public void SetMaxMotorForce(float force)
     {
         DistanceJoint_SetMaxMotorForce(_id, force);
     }
 
+    /// <summary>
+    /// Get the distance joint maximum motor force, usually in newtons
+    /// </summary>
     public float GetMaxMotorForce()
     {
         return DistanceJoint_GetMaxMotorForce(_id);
     }
 
+    /// <summary>
+    /// Get the distance joint current motor force, usually in newtons
+    /// </summary>
     public float GetMotorForce()
     {
         return DistanceJoint_GetMotorForce(_id);

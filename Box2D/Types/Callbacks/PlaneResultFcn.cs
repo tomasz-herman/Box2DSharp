@@ -4,6 +4,10 @@ using Box2D.Id;
 
 namespace Box2D.Types.Callbacks;
 
+/// <summary>
+/// Used to collect collision planes for character movers.
+/// Return true to continue gathering planes.
+/// </summary>
 public readonly unsafe struct PlaneResultFcn(delegate*<ShapeId, PlaneResult*, void*, bool> ptr)
 {
     private readonly delegate*<ShapeId, PlaneResult*, void*, bool> _ptr = ptr;

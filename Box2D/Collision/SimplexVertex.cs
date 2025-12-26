@@ -2,6 +2,9 @@ using System.Numerics;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Simplex vertex for debugging the GJK algorithm
+/// </summary>
 public struct SimplexVertex
 {
     public Vector2 WA;

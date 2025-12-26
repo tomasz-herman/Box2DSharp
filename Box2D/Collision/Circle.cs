@@ -4,6 +4,9 @@ using Box2D.Math;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// A solid circle
+/// </summary>
 public struct Circle
 {
     public Vector2 Center;

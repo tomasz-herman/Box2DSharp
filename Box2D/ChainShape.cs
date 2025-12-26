@@ -14,39 +14,88 @@ public unsafe class ChainShape : IDisposable
         _id = CreateChain(bodyId, ref def);
     }
 
+    /// <summary>
+    /// Chain identifier validation. Provides validation for up to 64K allocations.
+    /// </summary>
     public bool IsValid()
     {
         return Chain_IsValid(_id);
     }
 
+    /// <summary>
+    /// Get the world that owns this chain shape
+    /// </summary>
     public WorldId GetWorld()
     {
         return Chain_GetWorld(_id);
     }
 
+    /// <summary>
+    /// Get the number of segments on this chain
+    /// </summary>
     public int GetSegmentCount()
     {
         return Chain_GetSegmentCount(_id);
     }
 
+    /// <summary>
+    /// Fill a user array with chain segment shape ids up to the specified capacity. Returns
+    /// the actual number of segments returned.
+    /// </summary>
     public int GetSegments(ShapeId* segmentArray, int capacity)
     {
         return Chain_GetSegments(_id, segmentArray, capacity);
     }
 
-    public int GetSurfaceMaterialCount()
+    /// <summary>
+    /// Set the chain friction
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.SurfaceMaterial.Friction"/>
+    public void SetFriction(float friction)
     {
-        return Chain_GetSurfaceMaterialCount(_id);
+        Chain_SetFriction(_id, friction);
     }
 
-    public void SetSurfaceMaterial(ref SurfaceMaterial material, int materialIndex)
+    /// <summary>
+    /// Get the chain friction
+    /// </summary>
+    public float GetFriction()
     {
-        Chain_SetSurfaceMaterial(_id, ref material, materialIndex);
+        return Chain_GetFriction(_id);
     }
 
-    public SurfaceMaterial GetSurfaceMaterial(int materialIndex)
+    /// <summary>
+    /// Set the chain restitution (bounciness)
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.SurfaceMaterial.Restitution"/>
+    public void SetRestitution(float restitution)
     {
-        return Chain_GetSurfaceMaterial(_id, materialIndex);
+        Chain_SetRestitution(_id, restitution);
+    }
+
+    /// <summary>
+    /// Get the chain restitution
+    /// </summary>
+    public float GetRestitution()
+    {
+        return Chain_GetRestitution(_id);
+    }
+
+    /// <summary>
+    /// Set the chain material
+    /// </summary>
+    /// <seealso cref="Box2D.Types.Shapes.SurfaceMaterial"/>
+    public void SetMaterial(int material)
+    {
+        Chain_SetMaterial(_id, material);
+    }
+
+    /// <summary>
+    /// Get the chain material
+    /// </summary>
+    public int GetMaterial()
+    {
+        return Chain_GetMaterial(_id);
     }
 
     #region NativeFunctions
@@ -66,8 +115,23 @@ public unsafe class ChainShape : IDisposable
     [DllImport("box2d", EntryPoint = "b2Chain_GetSegments")]
     private static extern int Chain_GetSegments(ChainId chainId, ShapeId* segmentArray, int capacity);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetSurfaceMaterialCount")]
-    private static extern int Chain_GetSurfaceMaterialCount(ChainId chainId);
+    [DllImport("box2d", EntryPoint = "b2Chain_SetFriction")]
+    private static extern void Chain_SetFriction(ChainId chainId, float friction);
+
+    [DllImport("box2d", EntryPoint = "b2Chain_GetFriction")]
+    private static extern float Chain_GetFriction(ChainId chainId);
+
+    [DllImport("box2d", EntryPoint = "b2Chain_SetRestitution")]
+    private static extern void Chain_SetRestitution(ChainId chainId, float restitution);
+
+    [DllImport("box2d", EntryPoint = "b2Chain_GetRestitution")]
+    private static extern float Chain_GetRestitution(ChainId chainId);
+
+    [DllImport("box2d", EntryPoint = "b2Chain_SetMaterial")]
+    private static extern void Chain_SetMaterial(ChainId chainId, int material);
+
+    [DllImport("box2d", EntryPoint = "b2Chain_GetMaterial")]
+    private static extern int Chain_GetMaterial(ChainId chainId);
 
     [DllImport("box2d", EntryPoint = "b2Chain_SetSurfaceMaterial")]
     private static extern void Chain_SetSurfaceMaterial(ChainId chainId, ref SurfaceMaterial material, int materialIndex);

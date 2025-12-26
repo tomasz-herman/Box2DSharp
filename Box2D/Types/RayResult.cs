@@ -4,6 +4,9 @@ using Box2D.Id;
 
 namespace Box2D.Types;
 
+/// <summary>
+/// Result from a ray cast
+/// </summary>
 public struct RayResult
 {
     public ShapeId ShapeId;

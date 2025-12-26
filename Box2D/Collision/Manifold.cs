@@ -5,6 +5,12 @@ using Box2D.Math;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// A contact manifold describes the contact points between colliding shapes.
+/// </summary>
+/// <remarks>
+/// Note: Box2D uses speculative collision so some contact points may be separated.
+/// </remarks>
 public struct Manifold
 {
     public Vector2 Normal;

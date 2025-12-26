@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Low level ray cast input data
+/// </summary>
 public unsafe struct RayCastInput
 {
     public Vector2 Origin;

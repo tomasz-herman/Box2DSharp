@@ -1,5 +1,8 @@
 namespace Box2D.Base;
 
+/// <summary>
+/// Prototype for the user assert callback. Return 0 to skip the debugger break.
+/// </summary>
 public unsafe struct AssertFcn(delegate*<byte*, byte*, int, int> ptr)
 {
     private readonly delegate*<byte*, byte*, int, int> _ptr = ptr;

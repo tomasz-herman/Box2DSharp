@@ -2,6 +2,9 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Types.Shapes;
 
+/// <summary>
+/// Surface materials allow chain shapes to have per segment surface properties.
+/// </summary>
 public struct SurfaceMaterial
 {
     public float Friction;

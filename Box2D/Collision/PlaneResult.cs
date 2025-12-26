@@ -4,6 +4,9 @@ using Plane = Box2D.Math.Plane;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// These are the collision planes returned from b2World_CollideMover
+/// </summary>
 public struct PlaneResult
 {
     public Plane Plane;

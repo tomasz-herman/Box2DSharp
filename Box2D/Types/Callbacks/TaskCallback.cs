@@ -1,5 +1,11 @@
 namespace Box2D.Types.Callbacks;
 
+/// <summary>
+/// Task interface
+/// </summary>
+/// <code>
+/// void Task(int startIndex, int endIndex, uint threadIndex, void* context);
+/// </code>
 public readonly unsafe struct TaskCallback(delegate*<int, int, uint, void*, void> ptr)
 {
     private readonly delegate*<int, int, uint, void*, void> _ptr = ptr;

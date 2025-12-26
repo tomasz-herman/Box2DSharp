@@ -10,41 +10,65 @@ public unsafe class WeldJoint : Joint
     {
     }
 
+    /// <summary>
+    /// Set the weld joint linear stiffness in Hertz. 0 is rigid.
+    /// </summary>
     public void SetLinearHertz(float hertz)
     {
         WeldJoint_SetLinearHertz(_id, hertz);
     }
 
+    /// <summary>
+    /// Get the weld joint linear stiffness in Hertz
+    /// </summary>
     public float GetLinearHertz()
     {
         return WeldJoint_GetLinearHertz(_id);
     }
 
+    /// <summary>
+    /// Set the weld joint linear damping ratio (non-dimensional)
+    /// </summary>
     public void SetLinearDampingRatio(float dampingRatio)
     {
         WeldJoint_SetLinearDampingRatio(_id, dampingRatio);
     }
 
+    /// <summary>
+    /// Get the weld joint linear damping ratio (non-dimensional)
+    /// </summary>
     public float GetLinearDampingRatio()
     {
         return WeldJoint_GetLinearDampingRatio(_id);
     }
 
+    /// <summary>
+    /// Set the weld joint angular stiffness in Hertz. 0 is rigid.
+    /// </summary>
     public void SetAngularHertz(float hertz)
     {
         WeldJoint_SetAngularHertz(_id, hertz);
     }
 
+    /// <summary>
+    /// Get the weld joint angular stiffness in Hertz
+    /// </summary>
     public float GetAngularHertz()
     {
         return WeldJoint_GetAngularHertz(_id);
     }
 
+    /// <summary>
+    /// Set weld joint angular damping ratio, non-dimensional
+    /// </summary>
     public void SetAngularDampingRatio(float dampingRatio)
     {
         WeldJoint_SetAngularDampingRatio(_id, dampingRatio);
     }
 
+    /// <summary>
+    /// Get the weld joint angular damping ratio, non-dimensional
+    /// </summary>
     public float GetAngularDampingRatio()
     {
         return WeldJoint_GetAngularDampingRatio(_id);

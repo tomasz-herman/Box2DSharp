@@ -6,6 +6,10 @@ namespace Box2D.Joints;
 
 public unsafe class FilterJoint : Joint
 {
+    /// <summary>
+    /// Create a filter joint.
+    /// </summary>
+    /// <seealso cref="FilterJointDef"/>
     public FilterJoint(WorldId worldId, ref FilterJointDef def) : base(CreateFilterJoint(worldId, ref def))
     {
     }

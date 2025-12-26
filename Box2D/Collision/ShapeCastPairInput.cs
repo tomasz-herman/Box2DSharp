@@ -4,6 +4,9 @@ using Box2D.Math;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Input parameters for b2ShapeCast
+/// </summary>
 public struct ShapeCastPairInput
 {
     public ShapeProxy ProxyA;

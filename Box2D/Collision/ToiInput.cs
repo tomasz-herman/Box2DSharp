@@ -2,6 +2,9 @@ using System.Runtime.InteropServices;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Input parameters for b2TimeOfImpact
+/// </summary>
 public struct ToiInput
 {
     public ShapeProxy ProxyA;

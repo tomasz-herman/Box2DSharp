@@ -1,5 +1,8 @@
 namespace Box2D.Id;
 
+/// <summary>
+/// Joint id references a joint instance. This should be treated as an opaque handle.
+/// </summary>
 public struct JointId
 {
     private int _index;

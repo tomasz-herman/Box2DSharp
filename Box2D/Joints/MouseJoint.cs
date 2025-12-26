@@ -11,41 +11,65 @@ public unsafe class MouseJoint : Joint
     {
     }
 
+    /// <summary>
+    /// Set the mouse joint target
+    /// </summary>
     public void SetTarget(Vector2 target)
     {
         MouseJoint_SetTarget(_id, target);
     }
 
+    /// <summary>
+    /// Get the mouse joint target
+    /// </summary>
     public Vector2 GetTarget()
     {
         return MouseJoint_GetTarget(_id);
     }
 
+    /// <summary>
+    /// Set the mouse joint spring stiffness in Hertz
+    /// </summary>
     public void SetSpringHertz(float hertz)
     {
         MouseJoint_SetSpringHertz(_id, hertz);
     }
 
+    /// <summary>
+    /// Get the mouse joint spring stiffness in Hertz
+    /// </summary>
     public float GetSpringHertz()
     {
         return MouseJoint_GetSpringHertz(_id);
     }
 
+    /// <summary>
+    /// Set the mouse joint spring damping ratio, non-dimensional
+    /// </summary>
     public void SetSpringDampingRatio(float dampingRatio)
     {
         MouseJoint_SetSpringDampingRatio(_id, dampingRatio);
     }
 
+    /// <summary>
+    /// Get the mouse joint damping ratio, non-dimensional
+    /// </summary>
     public float GetSpringDampingRatio()
     {
         return MouseJoint_GetSpringDampingRatio(_id);
     }
 
+    /// <summary>
+    /// Set the mouse joint maximum force, usually in newtons
+    /// </summary>
     public void SetMaxForce(float maxForce)
     {
         MouseJoint_SetMaxForce(_id, maxForce);
     }
 
+    /// <summary>
+    /// Get the mouse joint maximum force, usually in newtons
+    /// </summary>
     public float GetMaxForce()
     {
         return MouseJoint_GetMaxForce(_id);

@@ -2,6 +2,9 @@ using System.Numerics;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Output parameters for b2TimeOfImpact.
+/// </summary>
 public struct ToiOutput
 {
     public ToiState State;

@@ -2,6 +2,9 @@ using System.Numerics;
 
 namespace Box2D.Collision;
 
+/// <summary>
+/// Output for b2ShapeDistance
+/// </summary>
 public struct DistanceOutput
 {
     public Vector2 PointA;
