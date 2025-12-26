@@ -1,8 +1,10 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Id;
 
 /// <summary>
 /// Joint id references a joint instance. This should be treated as an opaque handle.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct JointId
 {
     private int _index;

@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace Box2D.Collision;
 
@@ -7,6 +8,7 @@ namespace Box2D.Collision;
 /// Several of these are generated for a chain shape.
 /// ghost1 -> point1 -> point2 -> ghost2
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct ChainSegment
 {
     public Vector2 Ghost1;

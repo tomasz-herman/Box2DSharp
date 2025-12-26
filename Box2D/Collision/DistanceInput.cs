@@ -6,6 +6,7 @@ namespace Box2D.Collision;
 /// <summary>
 /// Input for b2ShapeDistance
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct DistanceInput
 {
     public ShapeProxy ProxyA;

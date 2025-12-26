@@ -6,7 +6,8 @@ namespace Box2D.Base;
 /// Version numbering scheme.
 /// See https://semver.org/
 /// </summary>
-public struct Version
+[StructLayout(LayoutKind.Sequential)]
+public partial struct Version
 {
     /// <summary>
     /// Significant changes
@@ -24,8 +25,8 @@ public struct Version
     /// <summary>
     /// Get the current version of Box2D
     /// </summary>
-    [DllImport("box2d",  EntryPoint = "b2GetVersion")]
-    public static extern Version GetVersion();
+    [LibraryImport("box2d",  EntryPoint = "b2GetVersion")]
+    public static partial Version GetVersion();
 
     public override string ToString() => $"{Major}.{Minor}.{Revision}";
 }

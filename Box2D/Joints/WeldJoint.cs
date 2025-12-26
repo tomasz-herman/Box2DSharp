@@ -4,7 +4,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D.Joints;
 
-public unsafe class WeldJoint : Joint
+public unsafe partial class WeldJoint : Joint
 {
     public WeldJoint(WorldId worldId, ref WeldJointDef def) : base(CreateWeldJoint(worldId, ref def))
     {
@@ -76,32 +76,32 @@ public unsafe class WeldJoint : Joint
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateWeldJoint")]
-    private static extern JointId CreateWeldJoint(WorldId worldId, ref WeldJointDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateWeldJoint")]
+    private static partial JointId CreateWeldJoint(WorldId worldId, ref WeldJointDef def);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_SetLinearHertz")]
-    private static extern void WeldJoint_SetLinearHertz(JointId jointId, float hertz);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_SetLinearHertz")]
+    private static partial void WeldJoint_SetLinearHertz(JointId jointId, float hertz);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_GetLinearHertz")]
-    private static extern float WeldJoint_GetLinearHertz(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_GetLinearHertz")]
+    private static partial float WeldJoint_GetLinearHertz(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_SetLinearDampingRatio")]
-    private static extern void WeldJoint_SetLinearDampingRatio(JointId jointId, float dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_SetLinearDampingRatio")]
+    private static partial void WeldJoint_SetLinearDampingRatio(JointId jointId, float dampingRatio);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_GetLinearDampingRatio")]
-    private static extern float WeldJoint_GetLinearDampingRatio(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_GetLinearDampingRatio")]
+    private static partial float WeldJoint_GetLinearDampingRatio(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_SetAngularHertz")]
-    private static extern void WeldJoint_SetAngularHertz(JointId jointId, float hertz);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_SetAngularHertz")]
+    private static partial void WeldJoint_SetAngularHertz(JointId jointId, float hertz);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_GetAngularHertz")]
-    private static extern float WeldJoint_GetAngularHertz(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_GetAngularHertz")]
+    private static partial float WeldJoint_GetAngularHertz(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_SetAngularDampingRatio")]
-    private static extern void WeldJoint_SetAngularDampingRatio(JointId jointId, float dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_SetAngularDampingRatio")]
+    private static partial void WeldJoint_SetAngularDampingRatio(JointId jointId, float dampingRatio);
 
-    [DllImport("box2d", EntryPoint = "b2WeldJoint_GetAngularDampingRatio")]
-    private static extern float WeldJoint_GetAngularDampingRatio(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WeldJoint_GetAngularDampingRatio")]
+    private static partial float WeldJoint_GetAngularDampingRatio(JointId jointId);
 
     #endregion
 }

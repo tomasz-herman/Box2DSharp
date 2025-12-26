@@ -10,7 +10,7 @@ namespace Box2D.Types.Joints;
 /// A typical usage is to control the movement of a dynamic body with respect to the ground.
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MotorJointDef
+public unsafe partial struct MotorJointDef
 {
     public BodyId BodyIdA;
     public BodyId BodyIdB;
@@ -24,6 +24,6 @@ public unsafe struct MotorJointDef
     public void* UserData;
     public int InternalValue;
 
-    [DllImport("box2d", EntryPoint = "b2DefaultMotorJointDef")]
-    public static extern MotorJointDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultMotorJointDef")]
+    public static partial MotorJointDef Default();
 }

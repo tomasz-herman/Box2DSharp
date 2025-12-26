@@ -1,8 +1,10 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Types;
 
 /// <summary>
 /// Counters that give details of the simulation size.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public unsafe struct Counters
 {
     public int BodyCount;

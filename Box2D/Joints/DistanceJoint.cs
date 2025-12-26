@@ -4,7 +4,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D.Joints;
 
-public unsafe class DistanceJoint : Joint
+public unsafe partial class DistanceJoint : Joint
 {
     public DistanceJoint(WorldId worldId, ref DistanceJointDef def) : base(CreateDistanceJoint(worldId, ref def))
     {
@@ -182,74 +182,74 @@ public unsafe class DistanceJoint : Joint
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateDistanceJoint")]
-    private static extern JointId CreateDistanceJoint(WorldId worldId, ref DistanceJointDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateDistanceJoint")]
+    private static partial JointId CreateDistanceJoint(WorldId worldId, ref DistanceJointDef def);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_SetLength")]
-    private static extern void DistanceJoint_SetLength(JointId jointId, float length);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_SetLength")]
+    private static partial void DistanceJoint_SetLength(JointId jointId, float length);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetLength")]
-    private static extern float DistanceJoint_GetLength(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetLength")]
+    private static partial float DistanceJoint_GetLength(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_EnableSpring")]
-    private static extern void DistanceJoint_EnableSpring(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableSpring);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_EnableSpring")]
+    private static partial void DistanceJoint_EnableSpring(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableSpring);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_IsSpringEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_IsSpringEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool DistanceJoint_IsSpringEnabled(JointId jointId);
+    private static partial bool DistanceJoint_IsSpringEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_SetSpringHertz")]
-    private static extern void DistanceJoint_SetSpringHertz(JointId jointId, float hertz);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_SetSpringHertz")]
+    private static partial void DistanceJoint_SetSpringHertz(JointId jointId, float hertz);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_SetSpringDampingRatio")]
-    private static extern void DistanceJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_SetSpringDampingRatio")]
+    private static partial void DistanceJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetSpringHertz")]
-    private static extern float DistanceJoint_GetSpringHertz(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetSpringHertz")]
+    private static partial float DistanceJoint_GetSpringHertz(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetSpringDampingRatio")]
-    private static extern float DistanceJoint_GetSpringDampingRatio(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetSpringDampingRatio")]
+    private static partial float DistanceJoint_GetSpringDampingRatio(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_EnableLimit")]
-    private static extern void DistanceJoint_EnableLimit(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableLimit);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_EnableLimit")]
+    private static partial void DistanceJoint_EnableLimit(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableLimit);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_IsLimitEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_IsLimitEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool DistanceJoint_IsLimitEnabled(JointId jointId);
+    private static partial bool DistanceJoint_IsLimitEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_SetLengthRange")]
-    private static extern void DistanceJoint_SetLengthRange(JointId jointId, float minLength, float maxLength);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_SetLengthRange")]
+    private static partial void DistanceJoint_SetLengthRange(JointId jointId, float minLength, float maxLength);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetMinLength")]
-    private static extern float DistanceJoint_GetMinLength(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetMinLength")]
+    private static partial float DistanceJoint_GetMinLength(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetMaxLength")]
-    private static extern float DistanceJoint_GetMaxLength(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetMaxLength")]
+    private static partial float DistanceJoint_GetMaxLength(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetCurrentLength")]
-    private static extern float DistanceJoint_GetCurrentLength(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetCurrentLength")]
+    private static partial float DistanceJoint_GetCurrentLength(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_EnableMotor")]
-    private static extern void DistanceJoint_EnableMotor(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableMotor);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_EnableMotor")]
+    private static partial void DistanceJoint_EnableMotor(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableMotor);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_IsMotorEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_IsMotorEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool DistanceJoint_IsMotorEnabled(JointId jointId);
+    private static partial bool DistanceJoint_IsMotorEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_SetMotorSpeed")]
-    private static extern void DistanceJoint_SetMotorSpeed(JointId jointId, float motorSpeed);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_SetMotorSpeed")]
+    private static partial void DistanceJoint_SetMotorSpeed(JointId jointId, float motorSpeed);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetMotorSpeed")]
-    private static extern float DistanceJoint_GetMotorSpeed(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetMotorSpeed")]
+    private static partial float DistanceJoint_GetMotorSpeed(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_SetMaxMotorForce")]
-    private static extern void DistanceJoint_SetMaxMotorForce(JointId jointId, float force);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_SetMaxMotorForce")]
+    private static partial void DistanceJoint_SetMaxMotorForce(JointId jointId, float force);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetMaxMotorForce")]
-    private static extern float DistanceJoint_GetMaxMotorForce(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetMaxMotorForce")]
+    private static partial float DistanceJoint_GetMaxMotorForce(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2DistanceJoint_GetMotorForce")]
-    private static extern float DistanceJoint_GetMotorForce(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DistanceJoint_GetMotorForce")]
+    private static partial float DistanceJoint_GetMotorForce(JointId jointId);
 
     #endregion
 }

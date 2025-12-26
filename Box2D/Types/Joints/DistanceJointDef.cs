@@ -13,7 +13,7 @@ namespace Box2D.Types.Joints;
 /// constraint slightly. This helps when saving and loading a game.
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct DistanceJointDef
+public unsafe partial struct DistanceJointDef
 {
     public BodyId BodyIdA;
     public BodyId BodyIdB;
@@ -37,6 +37,6 @@ public unsafe struct DistanceJointDef
     public void* UserData;
     public int InternalValue;
 
-    [DllImport("box2d", EntryPoint = "b2DefaultDistanceJointDef")]
-    public static extern DistanceJointDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultDistanceJointDef")]
+    public static partial DistanceJointDef Default();
 }

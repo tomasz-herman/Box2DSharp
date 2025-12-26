@@ -7,11 +7,12 @@ namespace Box2D.Types.Shapes;
 /// you may want a ray-cast representing a projectile to hit players and the static environment
 /// but not debris.
 /// </summary>
-public struct QueryFilter
+[StructLayout(LayoutKind.Sequential)]
+public partial struct QueryFilter
 {
     public ulong CategoryBits;
     public ulong MaskBits;
     
-    [DllImport("box2d", EntryPoint = "b2DefaultQueryFilter")]
-    public static extern QueryFilter Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultQueryFilter")]
+    public static partial QueryFilter Default();
 }

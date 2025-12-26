@@ -6,7 +6,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D;
 
-public unsafe class Joint : IDisposable
+public unsafe partial class Joint : IDisposable
 {
     protected readonly JointId _id;
     private bool _disposed;
@@ -216,82 +216,82 @@ public unsafe class Joint : IDisposable
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2DestroyJoint")]
-    private static extern void DestroyJoint(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2DestroyJoint")]
+    private static partial void DestroyJoint(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_IsValid")]
+    [LibraryImport("box2d", EntryPoint = "b2Joint_IsValid")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Joint_IsValid(JointId id);
+    private static partial bool Joint_IsValid(JointId id);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetType")]
-    private static extern JointType Joint_GetType(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetType")]
+    private static partial JointType Joint_GetType(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetBodyA")]
-    private static extern BodyId Joint_GetBodyA(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetBodyA")]
+    private static partial BodyId Joint_GetBodyA(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetBodyB")]
-    private static extern BodyId Joint_GetBodyB(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetBodyB")]
+    private static partial BodyId Joint_GetBodyB(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetWorld")]
-    private static extern WorldId Joint_GetWorld(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetWorld")]
+    private static partial WorldId Joint_GetWorld(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_SetLocalAnchorA")]
-    private static extern void Joint_SetLocalAnchorA(JointId jointId, Vector2 localAnchor);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_SetLocalAnchorA")]
+    private static partial void Joint_SetLocalAnchorA(JointId jointId, Vector2 localAnchor);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetLocalAnchorA")]
-    private static extern Vector2 Joint_GetLocalAnchorA(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetLocalAnchorA")]
+    private static partial Vector2 Joint_GetLocalAnchorA(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_SetLocalAnchorB")]
-    private static extern void Joint_SetLocalAnchorB(JointId jointId, Vector2 localAnchor);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_SetLocalAnchorB")]
+    private static partial void Joint_SetLocalAnchorB(JointId jointId, Vector2 localAnchor);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetLocalAnchorB")]
-    private static extern Vector2 Joint_GetLocalAnchorB(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetLocalAnchorB")]
+    private static partial Vector2 Joint_GetLocalAnchorB(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetReferenceAngle")]
-    private static extern float Joint_GetReferenceAngle(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetReferenceAngle")]
+    private static partial float Joint_GetReferenceAngle(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_SetReferenceAngle")]
-    private static extern void Joint_SetReferenceAngle(JointId jointId, float angleInRadians);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_SetReferenceAngle")]
+    private static partial void Joint_SetReferenceAngle(JointId jointId, float angleInRadians);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_SetLocalAxisA")]
-    private static extern void Joint_SetLocalAxisA(JointId jointId, Vector2 localAxis);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_SetLocalAxisA")]
+    private static partial void Joint_SetLocalAxisA(JointId jointId, Vector2 localAxis);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetLocalAxisA")]
-    private static extern Vector2 Joint_GetLocalAxisA(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetLocalAxisA")]
+    private static partial Vector2 Joint_GetLocalAxisA(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_SetCollideConnected")]
-    private static extern void Joint_SetCollideConnected(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool shouldCollide);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_SetCollideConnected")]
+    private static partial void Joint_SetCollideConnected(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool shouldCollide);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetCollideConnected")]
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetCollideConnected")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Joint_GetCollideConnected(JointId jointId);
+    private static partial bool Joint_GetCollideConnected(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_SetUserData")]
-    private static extern void Joint_SetUserData(JointId jointId, void* userData);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_SetUserData")]
+    private static partial void Joint_SetUserData(JointId jointId, void* userData);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetUserData")]
-    private static extern void* Joint_GetUserData(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetUserData")]
+    private static partial void* Joint_GetUserData(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_WakeBodies")]
-    private static extern void Joint_WakeBodies(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_WakeBodies")]
+    private static partial void Joint_WakeBodies(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetConstraintForce")]
-    private static extern Vector2 Joint_GetConstraintForce(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetConstraintForce")]
+    private static partial Vector2 Joint_GetConstraintForce(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetConstraintTorque")]
-    private static extern float Joint_GetConstraintTorque(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetConstraintTorque")]
+    private static partial float Joint_GetConstraintTorque(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetLinearSeparation")]
-    private static extern float Joint_GetLinearSeparation(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetLinearSeparation")]
+    private static partial float Joint_GetLinearSeparation(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetAngularSeparation")]
-    private static extern float Joint_GetAngularSeparation(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetAngularSeparation")]
+    private static partial float Joint_GetAngularSeparation(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_SetConstraintTuning")]
-    private static extern void Joint_SetConstraintTuning(JointId jointId, float hertz, float dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_SetConstraintTuning")]
+    private static partial void Joint_SetConstraintTuning(JointId jointId, float hertz, float dampingRatio);
 
-    [DllImport("box2d", EntryPoint = "b2Joint_GetConstraintTuning")]
-    private static extern void Joint_GetConstraintTuning(JointId jointId, float* hertz, float* dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2Joint_GetConstraintTuning")]
+    private static partial void Joint_GetConstraintTuning(JointId jointId, float* hertz, float* dampingRatio);
 
     #endregion
 

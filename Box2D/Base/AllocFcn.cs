@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Base;
 
 /// <summary>
@@ -5,6 +6,7 @@ namespace Box2D.Base;
 /// </summary>
 /// <param name="size">the allocation size in bytes</param>
 /// <param name="alignment">the required alignment, guaranteed to be a power of 2</param>
+[StructLayout(LayoutKind.Sequential)]
 public unsafe struct AllocFcn(delegate*<uint, int, void*> ptr)
 {
     private readonly delegate*<uint, int, void*> _ptr = ptr;

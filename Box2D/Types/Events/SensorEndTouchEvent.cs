@@ -1,4 +1,5 @@
 using Box2D.Id;
+using System.Runtime.InteropServices;
 
 namespace Box2D.Types.Events;
 
@@ -8,6 +9,7 @@ namespace Box2D.Types.Events;
 ///     a filter. You will also get an end event if the sensor or visitor are destroyed.
 ///     Therefore you should always confirm the shape id is valid using b2Shape_IsValid.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct SensorEndTouchEvent
 {
     public ShapeId SensorShapeId;

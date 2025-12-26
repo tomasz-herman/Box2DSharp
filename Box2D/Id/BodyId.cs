@@ -1,8 +1,10 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Id;
 
 /// <summary>
 /// Body id references a body instance. This should be treated as an opaque handle.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct BodyId
 {
     private int _index;

@@ -9,7 +9,7 @@ using Box2D.Types.Shapes;
 
 namespace Box2D;
 
-public unsafe class World : IDisposable
+public unsafe partial class World : IDisposable
 {
     private readonly WorldId _id;
     public WorldId Id => _id;
@@ -380,144 +380,138 @@ public unsafe class World : IDisposable
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateWorld")]
-    private static extern WorldId CreateWorld(ref WorldDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateWorld")]
+    private static partial WorldId CreateWorld(ref WorldDef def);
 
-    [DllImport("box2d", EntryPoint = "b2DestroyWorld")]
-    private static extern void DestroyWorld(WorldId id);
+    [LibraryImport("box2d", EntryPoint = "b2DestroyWorld")]
+    private static partial void DestroyWorld(WorldId id);
 
-    [DllImport("box2d", EntryPoint = "b2World_IsValid")]
+    [LibraryImport("box2d", EntryPoint = "b2World_IsValid")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool World_IsValid(WorldId id);
+    private static partial bool World_IsValid(WorldId id);
 
-    [DllImport("box2d", EntryPoint = "b2World_Step")]
-    private static extern void World_Step(WorldId id, float timeStep, int subStepCount);
+    [LibraryImport("box2d", EntryPoint = "b2World_Step")]
+    private static partial void World_Step(WorldId id, float timeStep, int subStepCount);
 
-    [DllImport("box2d", EntryPoint = "b2World_Step")]
-    private static extern void World_Draw(WorldId id, ref DebugDraw draw);
+    [LibraryImport("box2d", EntryPoint = "b2World_Step")]
+    private static partial void World_Draw(WorldId id, ref DebugDraw draw);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetBodyEvents")]
-    private static extern BodyEvents World_GetBodyEvents(WorldId id);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetBodyEvents")]
+    private static partial BodyEvents World_GetBodyEvents(WorldId id);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetSensorEvents")]
-    private static extern SensorEvents World_GetSensorEvents(WorldId id);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetSensorEvents")]
+    private static partial SensorEvents World_GetSensorEvents(WorldId id);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetContactEvents")]
-    private static extern ContactEvents World_GetContactEvents(WorldId id);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetContactEvents")]
+    private static partial ContactEvents World_GetContactEvents(WorldId id);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetJointEvents")]
-    private static extern JointEvents World_GetJointEvents(WorldId id);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetJointEvents")]
+    private static partial JointEvents World_GetJointEvents(WorldId id);
 
-    [DllImport("box2d", EntryPoint = "b2World_CastRay")]
-    private static extern TreeStats World_CastRay(WorldId worldId, Vector2 origin, Vector2 translation,
+    [LibraryImport("box2d", EntryPoint = "b2World_CastRay")]
+    private static partial TreeStats World_CastRay(WorldId worldId, Vector2 origin, Vector2 translation,
         QueryFilter filter,
         CastResultFcn fcn, void* context);
 
-    [DllImport("box2d", EntryPoint = "b2World_CastRayClosest")]
-    private static extern RayResult World_CastRayClosest(WorldId worldId, Vector2 origin, Vector2 translation,
-        QueryFilter filter);
+    [LibraryImport("box2d", EntryPoint = "b2World_CastRayClosest")]
+    private static partial RayResult World_CastRayClosest(WorldId worldId, Vector2 origin, Vector2 translation, QueryFilter filter);
 
-    [DllImport("box2d", EntryPoint = "b2World_CastShape")]
-    private static extern TreeStats World_CastShape(WorldId worldId, ref ShapeProxy proxy, Vector2 translation,
-        QueryFilter filter,
-        CastResultFcn fcn, void* context);
+    [LibraryImport("box2d", EntryPoint = "b2World_CastShape")]
+    private static partial TreeStats World_CastShape(WorldId worldId, ref ShapeProxy proxy, Vector2 translation, QueryFilter filter, CastResultFcn fcn, void* context);
 
-    [DllImport("box2d", EntryPoint = "b2World_CastMover")]
-    private static extern float World_CastMover(WorldId worldId, ref Capsule mover, Vector2 translation,
-        QueryFilter filter);
+    [LibraryImport("box2d", EntryPoint = "b2World_CastMover")]
+    private static partial float World_CastMover(WorldId worldId, ref Capsule mover, Vector2 translation, QueryFilter filter);
 
-    [DllImport("box2d", EntryPoint = "b2World_CollideMover")]
-    private static extern void World_CollideMover(WorldId worldId, ref Capsule mover, QueryFilter filter,
-        PlaneResultFcn fcn,
-        void* context);
+    [LibraryImport("box2d", EntryPoint = "b2World_CollideMover")]
+    private static partial void World_CollideMover(WorldId worldId, ref Capsule mover, QueryFilter filter, PlaneResultFcn fcn, void* context);
 
-    [DllImport("box2d", EntryPoint = "b2World_EnableSleeping")]
-    private static extern void World_EnableSleeping(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2World_EnableSleeping")]
+    private static partial void World_EnableSleeping(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
-    [DllImport("box2d", EntryPoint = "b2World_IsSleepingEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2World_IsSleepingEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool World_IsSleepingEnabled(WorldId worldId);
+    private static partial bool World_IsSleepingEnabled(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_EnableContinuous")]
-    private static extern void World_EnableContinuous(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2World_EnableContinuous")]
+    private static partial void World_EnableContinuous(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
-    [DllImport("box2d", EntryPoint = "b2World_IsContinuousEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2World_IsContinuousEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool World_IsContinuousEnabled(WorldId worldId);
+    private static partial bool World_IsContinuousEnabled(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetRestitutionThreshold")]
-    private static extern void World_SetRestitutionThreshold(WorldId worldId, float value);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetRestitutionThreshold")]
+    private static partial void World_SetRestitutionThreshold(WorldId worldId, float value);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetRestitutionThreshold")]
-    private static extern float World_GetRestitutionThreshold(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetRestitutionThreshold")]
+    private static partial float World_GetRestitutionThreshold(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetHitEventThreshold")]
-    private static extern void World_SetHitEventThreshold(WorldId worldId, float value);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetHitEventThreshold")]
+    private static partial void World_SetHitEventThreshold(WorldId worldId, float value);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetHitEventThreshold")]
-    private static extern float World_GetHitEventThreshold(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetHitEventThreshold")]
+    private static partial float World_GetHitEventThreshold(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetCustomFilterCallback")]
-    private static extern void World_SetCustomFilterCallback(WorldId worldId, CustomFilterFcn fcn, void* context);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetCustomFilterCallback")]
+    private static partial void World_SetCustomFilterCallback(WorldId worldId, CustomFilterFcn fcn, void* context);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetPreSolveCallback")]
-    private static extern void World_SetPreSolveCallback(WorldId worldId, PreSolveFcn fcn, void* context);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetPreSolveCallback")]
+    private static partial void World_SetPreSolveCallback(WorldId worldId, PreSolveFcn fcn, void* context);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetGravity")]
-    private static extern void World_SetGravity(WorldId worldId, Vector2 gravity);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetGravity")]
+    private static partial void World_SetGravity(WorldId worldId, Vector2 gravity);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetGravity")]
-    private static extern Vector2 World_GetGravity(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetGravity")]
+    private static partial Vector2 World_GetGravity(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_Explode")]
-    private static extern void World_Explode(WorldId worldId, ref ExplosionDef explosionDef);
+    [LibraryImport("box2d", EntryPoint = "b2World_Explode")]
+    private static partial void World_Explode(WorldId worldId, ref ExplosionDef explosionDef);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetContactTuning")]
-    private static extern void World_SetContactTuning(WorldId worldId, float hertz, float dampingRatio,
+    [LibraryImport("box2d", EntryPoint = "b2World_SetContactTuning")]
+    private static partial void World_SetContactTuning(WorldId worldId, float hertz, float dampingRatio,
         float pushSpeed);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetMaximumLinearSpeed")]
-    private static extern void World_SetMaximumLinearSpeed(WorldId worldId, float maximumLinearSpeed);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetMaximumLinearSpeed")]
+    private static partial void World_SetMaximumLinearSpeed(WorldId worldId, float maximumLinearSpeed);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetMaximumLinearSpeed")]
-    private static extern float World_GetMaximumLinearSpeed(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetMaximumLinearSpeed")]
+    private static partial float World_GetMaximumLinearSpeed(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_EnableWarmStarting")]
-    private static extern void World_EnableWarmStarting(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2World_EnableWarmStarting")]
+    private static partial void World_EnableWarmStarting(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
-    [DllImport("box2d", EntryPoint = "b2World_IsWarmStartingEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2World_IsWarmStartingEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool World_IsWarmStartingEnabled(WorldId worldId);
+    private static partial bool World_IsWarmStartingEnabled(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetAwakeBodyCount")]
-    private static extern int World_GetAwakeBodyCount(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetAwakeBodyCount")]
+    private static partial int World_GetAwakeBodyCount(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetProfile")]
-    private static extern Profile World_GetProfile(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetProfile")]
+    private static partial Profile World_GetProfile(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetCounters")]
-    private static extern Counters World_GetCounters(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetCounters")]
+    private static partial Counters World_GetCounters(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetUserData")]
-    private static extern void World_SetUserData(WorldId worldId, void* userData);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetUserData")]
+    private static partial void World_SetUserData(WorldId worldId, void* userData);
 
-    [DllImport("box2d", EntryPoint = "b2World_GetUserData")]
-    private static extern void* World_GetUserData(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_GetUserData")]
+    private static partial void* World_GetUserData(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetFrictionCallback")]
-    private static extern void World_SetFrictionCallback(WorldId worldId, FrictionCallback callback);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetFrictionCallback")]
+    private static partial void World_SetFrictionCallback(WorldId worldId, FrictionCallback callback);
 
-    [DllImport("box2d", EntryPoint = "b2World_SetRestitutionCallback")]
-    private static extern void World_SetRestitutionCallback(WorldId worldId, RestitutionCallback callback);
+    [LibraryImport("box2d", EntryPoint = "b2World_SetRestitutionCallback")]
+    private static partial void World_SetRestitutionCallback(WorldId worldId, RestitutionCallback callback);
 
-    [DllImport("box2d", EntryPoint = "b2World_DumpMemoryStats")]
-    private static extern void World_DumpMemoryStats(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_DumpMemoryStats")]
+    private static partial void World_DumpMemoryStats(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_RebuildStaticTree")]
-    private static extern void World_RebuildStaticTree(WorldId worldId);
+    [LibraryImport("box2d", EntryPoint = "b2World_RebuildStaticTree")]
+    private static partial void World_RebuildStaticTree(WorldId worldId);
 
-    [DllImport("box2d", EntryPoint = "b2World_EnableSpeculative")]
-    private static extern void World_EnableSpeculative(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2World_EnableSpeculative")]
+    private static partial void World_EnableSpeculative(WorldId worldId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
     #endregion
 

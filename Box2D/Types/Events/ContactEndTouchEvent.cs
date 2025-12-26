@@ -1,4 +1,5 @@
 using Box2D.Id;
+using System.Runtime.InteropServices;
 
 namespace Box2D.Types.Events;
 
@@ -8,6 +9,7 @@ namespace Box2D.Types.Events;
 ///     world step. These include things like setting the transform, destroying a body
 ///     or shape, or changing a filter or body type.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct ContactEndTouchEvent
 {
     public ShapeId ShapeIdA;

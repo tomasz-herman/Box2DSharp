@@ -10,7 +10,8 @@ namespace Box2D.Types.Bodies;
 /// Body definitions are temporary objects used to bundle creation parameters.
 /// Must be initialized using b2DefaultBodyDef().
 /// </summary>
-public unsafe struct BodyDef
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct BodyDef
 {
     public BodyType Type;
     public Vector2 Position;
@@ -37,6 +38,6 @@ public unsafe struct BodyDef
     public bool AllowFastRotation;
     private int _internalValue;
     
-    [DllImport("box2d", EntryPoint = "b2DefaultBodyDef")]
-    public static extern BodyDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultBodyDef")]
+    public static partial BodyDef Default();
 }

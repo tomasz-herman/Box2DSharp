@@ -5,7 +5,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D.Joints;
 
-public unsafe class MotorJoint : Joint
+public unsafe partial class MotorJoint : Joint
 {
     public MotorJoint(WorldId worldId, ref MotorJointDef def) : base(CreateMotorJoint(worldId, ref def))
     {
@@ -94,38 +94,38 @@ public unsafe class MotorJoint : Joint
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateMotorJoint")]
-    private static extern JointId CreateMotorJoint(WorldId worldId, ref MotorJointDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateMotorJoint")]
+    private static partial JointId CreateMotorJoint(WorldId worldId, ref MotorJointDef def);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetLinearOffset")]
-    private static extern void MotorJoint_SetLinearOffset(JointId jointId, Vector2 linearOffset);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_SetLinearOffset")]
+    private static partial void MotorJoint_SetLinearOffset(JointId jointId, Vector2 linearOffset);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetLinearOffset")]
-    private static extern Vector2 MotorJoint_GetLinearOffset(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_GetLinearOffset")]
+    private static partial Vector2 MotorJoint_GetLinearOffset(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetAngularOffset")]
-    private static extern void MotorJoint_SetAngularOffset(JointId jointId, float angularOffset);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_SetAngularOffset")]
+    private static partial void MotorJoint_SetAngularOffset(JointId jointId, float angularOffset);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetAngularOffset")]
-    private static extern float MotorJoint_GetAngularOffset(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_GetAngularOffset")]
+    private static partial float MotorJoint_GetAngularOffset(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetMaxForce")]
-    private static extern void MotorJoint_SetMaxForce(JointId jointId, float maxForce);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_SetMaxForce")]
+    private static partial void MotorJoint_SetMaxForce(JointId jointId, float maxForce);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetMaxForce")]
-    private static extern float MotorJoint_GetMaxForce(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_GetMaxForce")]
+    private static partial float MotorJoint_GetMaxForce(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetMaxTorque")]
-    private static extern void MotorJoint_SetMaxTorque(JointId jointId, float maxTorque);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_SetMaxTorque")]
+    private static partial void MotorJoint_SetMaxTorque(JointId jointId, float maxTorque);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetMaxTorque")]
-    private static extern float MotorJoint_GetMaxTorque(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_GetMaxTorque")]
+    private static partial float MotorJoint_GetMaxTorque(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_SetCorrectionFactor")]
-    private static extern void MotorJoint_SetCorrectionFactor(JointId jointId, float correctionFactor);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_SetCorrectionFactor")]
+    private static partial void MotorJoint_SetCorrectionFactor(JointId jointId, float correctionFactor);
 
-    [DllImport("box2d", EntryPoint = "b2MotorJoint_GetCorrectionFactor")]
-    private static extern float MotorJoint_GetCorrectionFactor(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MotorJoint_GetCorrectionFactor")]
+    private static partial float MotorJoint_GetCorrectionFactor(JointId jointId);
 
     #endregion
 }

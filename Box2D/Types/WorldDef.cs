@@ -8,7 +8,8 @@ namespace Box2D.Types;
 /// World definition used to create a simulation world.
 /// Must be initialized using b2DefaultWorldDef().
 /// </summary>
-public unsafe struct WorldDef
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct WorldDef
 {
 	public Vector2 Gravity;
 	public float RestitutionThreshold;
@@ -34,6 +35,6 @@ public unsafe struct WorldDef
 	public void* UserData;
 	public int InternalValue;
 
-	[DllImport("box2d", EntryPoint = "b2DefaultWorldDef")]
-	public static extern WorldDef Default();
+	[LibraryImport("box2d", EntryPoint = "b2DefaultWorldDef")]
+	public static partial WorldDef Default();
 }

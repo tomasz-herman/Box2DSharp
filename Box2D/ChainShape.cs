@@ -4,7 +4,7 @@ using Box2D.Types.Shapes;
 
 namespace Box2D;
 
-public unsafe class ChainShape : IDisposable
+public unsafe partial class ChainShape : IDisposable
 {
     private readonly ChainId _id;
     private bool _disposed;
@@ -100,48 +100,48 @@ public unsafe class ChainShape : IDisposable
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateChain")]
-    private static extern ChainId CreateChain(BodyId bodyId, ref ChainDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateChain")]
+    private static partial ChainId CreateChain(BodyId bodyId, ref ChainDef def);
 
-    [DllImport("box2d", EntryPoint = "b2DestroyChain")]
-    private static extern void DestroyChain(ChainId chainId);
+    [LibraryImport("box2d", EntryPoint = "b2DestroyChain")]
+    private static partial void DestroyChain(ChainId chainId);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetWorld")]
-    private static extern WorldId Chain_GetWorld(ChainId chainId);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_GetWorld")]
+    private static partial WorldId Chain_GetWorld(ChainId chainId);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetSegmentCount")]
-    private static extern int Chain_GetSegmentCount(ChainId chainId);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_GetSegmentCount")]
+    private static partial int Chain_GetSegmentCount(ChainId chainId);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetSegments")]
-    private static extern int Chain_GetSegments(ChainId chainId, ShapeId* segmentArray, int capacity);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_GetSegments")]
+    private static partial int Chain_GetSegments(ChainId chainId, ShapeId* segmentArray, int capacity);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_SetFriction")]
-    private static extern void Chain_SetFriction(ChainId chainId, float friction);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_SetFriction")]
+    private static partial void Chain_SetFriction(ChainId chainId, float friction);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetFriction")]
-    private static extern float Chain_GetFriction(ChainId chainId);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_GetFriction")]
+    private static partial float Chain_GetFriction(ChainId chainId);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_SetRestitution")]
-    private static extern void Chain_SetRestitution(ChainId chainId, float restitution);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_SetRestitution")]
+    private static partial void Chain_SetRestitution(ChainId chainId, float restitution);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetRestitution")]
-    private static extern float Chain_GetRestitution(ChainId chainId);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_GetRestitution")]
+    private static partial float Chain_GetRestitution(ChainId chainId);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_SetMaterial")]
-    private static extern void Chain_SetMaterial(ChainId chainId, int material);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_SetMaterial")]
+    private static partial void Chain_SetMaterial(ChainId chainId, int material);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetMaterial")]
-    private static extern int Chain_GetMaterial(ChainId chainId);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_GetMaterial")]
+    private static partial int Chain_GetMaterial(ChainId chainId);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_SetSurfaceMaterial")]
-    private static extern void Chain_SetSurfaceMaterial(ChainId chainId, ref SurfaceMaterial material, int materialIndex);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_SetSurfaceMaterial")]
+    private static partial void Chain_SetSurfaceMaterial(ChainId chainId, ref SurfaceMaterial material, int materialIndex);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_GetSurfaceMaterial")]
-    private static extern SurfaceMaterial Chain_GetSurfaceMaterial(ChainId chainId, int materialIndex);
+    [LibraryImport("box2d", EntryPoint = "b2Chain_GetSurfaceMaterial")]
+    private static partial SurfaceMaterial Chain_GetSurfaceMaterial(ChainId chainId, int materialIndex);
 
-    [DllImport("box2d", EntryPoint = "b2Chain_IsValid")]
+    [LibraryImport("box2d", EntryPoint = "b2Chain_IsValid")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Chain_IsValid(ChainId id);
+    private static partial bool Chain_IsValid(ChainId id);
 
     #endregion
 

@@ -5,7 +5,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D.Joints;
 
-public unsafe class MouseJoint : Joint
+public unsafe partial class MouseJoint : Joint
 {
     public MouseJoint(WorldId worldId, ref MouseJointDef def) : base(CreateMouseJoint(worldId, ref def))
     {
@@ -77,32 +77,32 @@ public unsafe class MouseJoint : Joint
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateMouseJoint")]
-    private static extern JointId CreateMouseJoint(WorldId worldId, ref MouseJointDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateMouseJoint")]
+    private static partial JointId CreateMouseJoint(WorldId worldId, ref MouseJointDef def);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_SetTarget")]
-    private static extern void MouseJoint_SetTarget(JointId jointId, Vector2 target);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_SetTarget")]
+    private static partial void MouseJoint_SetTarget(JointId jointId, Vector2 target);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_GetTarget")]
-    private static extern Vector2 MouseJoint_GetTarget(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_GetTarget")]
+    private static partial Vector2 MouseJoint_GetTarget(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_SetSpringHertz")]
-    private static extern void MouseJoint_SetSpringHertz(JointId jointId, float hertz);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_SetSpringHertz")]
+    private static partial void MouseJoint_SetSpringHertz(JointId jointId, float hertz);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_GetSpringHertz")]
-    private static extern float MouseJoint_GetSpringHertz(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_GetSpringHertz")]
+    private static partial float MouseJoint_GetSpringHertz(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_SetSpringDampingRatio")]
-    private static extern void MouseJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_SetSpringDampingRatio")]
+    private static partial void MouseJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_GetSpringDampingRatio")]
-    private static extern float MouseJoint_GetSpringDampingRatio(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_GetSpringDampingRatio")]
+    private static partial float MouseJoint_GetSpringDampingRatio(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_SetMaxForce")]
-    private static extern void MouseJoint_SetMaxForce(JointId jointId, float maxForce);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_SetMaxForce")]
+    private static partial void MouseJoint_SetMaxForce(JointId jointId, float maxForce);
 
-    [DllImport("box2d", EntryPoint = "b2MouseJoint_GetMaxForce")]
-    private static extern float MouseJoint_GetMaxForce(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2MouseJoint_GetMaxForce")]
+    private static partial float MouseJoint_GetMaxForce(JointId jointId);
 
     #endregion
 }

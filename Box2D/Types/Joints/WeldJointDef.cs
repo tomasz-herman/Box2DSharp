@@ -11,7 +11,7 @@ namespace Box2D.Types.Joints;
 /// Note: The approximate solver in Box2D cannot hold many bodies together rigidly
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct WeldJointDef
+public unsafe partial struct WeldJointDef
 {
     public BodyId BodyIdA;
     public BodyId BodyIdB;
@@ -27,6 +27,6 @@ public unsafe struct WeldJointDef
     public void* UserData;
     public int InternalValue;
 
-    [DllImport("box2d", EntryPoint = "b2DefaultWeldJointDef")]
-    public static extern WeldJointDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultWeldJointDef")]
+    public static partial WeldJointDef Default();
 }

@@ -7,7 +7,8 @@ namespace Box2D.Types;
 /// <summary>
 /// This struct holds callbacks you can implement to draw the Box2D world.
 /// </summary>
-public unsafe struct DebugDraw
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct DebugDraw
 {
     public delegate*<Vector2*, int, HexColor, void*, void> DrawPolygonFcn;
     public delegate*<Transform, Vector2*, int, float, HexColor, void*, void> DrawSolidPolygonFcn;
@@ -50,6 +51,6 @@ public unsafe struct DebugDraw
     public bool DrawIslands;
     public void* Context;
     
-    [DllImport("box2d", EntryPoint = "b2DefaultDebugDraw")]
-    public static extern DebugDraw Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultDebugDraw")]
+    public static partial DebugDraw Default();
 }

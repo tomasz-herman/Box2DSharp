@@ -4,7 +4,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D.Joints;
 
-public unsafe class WheelJoint : Joint
+public unsafe partial class WheelJoint : Joint
 {
     public WheelJoint(WorldId worldId, ref WheelJointDef def) : base(CreateWheelJoint(worldId, ref def))
     {
@@ -156,65 +156,65 @@ public unsafe class WheelJoint : Joint
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateWheelJoint")]
-    private static extern JointId CreateWheelJoint(WorldId worldId, ref WheelJointDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateWheelJoint")]
+    private static partial JointId CreateWheelJoint(WorldId worldId, ref WheelJointDef def);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_EnableSpring")]
-    private static extern void WheelJoint_EnableSpring(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableSpring);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_EnableSpring")]
+    private static partial void WheelJoint_EnableSpring(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableSpring);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_IsSpringEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_IsSpringEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool WheelJoint_IsSpringEnabled(JointId jointId);
+    private static partial bool WheelJoint_IsSpringEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_SetSpringHertz")]
-    private static extern void WheelJoint_SetSpringHertz(JointId jointId, float hertz);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_SetSpringHertz")]
+    private static partial void WheelJoint_SetSpringHertz(JointId jointId, float hertz);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_GetSpringHertz")]
-    private static extern float WheelJoint_GetSpringHertz(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_GetSpringHertz")]
+    private static partial float WheelJoint_GetSpringHertz(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_SetSpringDampingRatio")]
-    private static extern void WheelJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_SetSpringDampingRatio")]
+    private static partial void WheelJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_GetSpringDampingRatio")]
-    private static extern float WheelJoint_GetSpringDampingRatio(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_GetSpringDampingRatio")]
+    private static partial float WheelJoint_GetSpringDampingRatio(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_EnableLimit")]
-    private static extern void WheelJoint_EnableLimit(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableLimit);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_EnableLimit")]
+    private static partial void WheelJoint_EnableLimit(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableLimit);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_IsLimitEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_IsLimitEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool WheelJoint_IsLimitEnabled(JointId jointId);
+    private static partial bool WheelJoint_IsLimitEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_GetLowerLimit")]
-    private static extern float WheelJoint_GetLowerLimit(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_GetLowerLimit")]
+    private static partial float WheelJoint_GetLowerLimit(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_GetUpperLimit")]
-    private static extern float WheelJoint_GetUpperLimit(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_GetUpperLimit")]
+    private static partial float WheelJoint_GetUpperLimit(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_SetLimits")]
-    private static extern void WheelJoint_SetLimits(JointId jointId, float lower, float upper);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_SetLimits")]
+    private static partial void WheelJoint_SetLimits(JointId jointId, float lower, float upper);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_EnableMotor")]
-    private static extern void WheelJoint_EnableMotor(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableMotor);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_EnableMotor")]
+    private static partial void WheelJoint_EnableMotor(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableMotor);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_IsMotorEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_IsMotorEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool WheelJoint_IsMotorEnabled(JointId jointId);
+    private static partial bool WheelJoint_IsMotorEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_SetMotorSpeed")]
-    private static extern void WheelJoint_SetMotorSpeed(JointId jointId, float motorSpeed);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_SetMotorSpeed")]
+    private static partial void WheelJoint_SetMotorSpeed(JointId jointId, float motorSpeed);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_GetMotorSpeed")]
-    private static extern float WheelJoint_GetMotorSpeed(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_GetMotorSpeed")]
+    private static partial float WheelJoint_GetMotorSpeed(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_SetMaxMotorTorque")]
-    private static extern void WheelJoint_SetMaxMotorTorque(JointId jointId, float torque);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_SetMaxMotorTorque")]
+    private static partial void WheelJoint_SetMaxMotorTorque(JointId jointId, float torque);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_GetMaxMotorTorque")]
-    private static extern float WheelJoint_GetMaxMotorTorque(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_GetMaxMotorTorque")]
+    private static partial float WheelJoint_GetMaxMotorTorque(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2WheelJoint_GetMotorTorque")]
-    private static extern float WheelJoint_GetMotorTorque(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2WheelJoint_GetMotorTorque")]
+    private static partial float WheelJoint_GetMotorTorque(JointId jointId);
 
     #endregion
 }

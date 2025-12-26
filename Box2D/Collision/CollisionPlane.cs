@@ -8,7 +8,8 @@ namespace Box2D.Collision;
 /// These are collision planes that can be fed to b2SolvePlanes. Normally
 /// this is assembled by the user from plane results in b2PlaneResult
 /// </summary>
-public unsafe struct CollisionPlane
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct CollisionPlane
 {
     public Plane Plane;
     public float PushLimit;
@@ -31,9 +32,9 @@ public unsafe struct CollisionPlane
         }
     }
 
-    [DllImport("box2d", EntryPoint = "b2SolvePlanes")]
-    public static extern PlaneSolverResult SolvePlanes(Vector2 targetDelta, CollisionPlane* planes, int count);
+    [LibraryImport("box2d", EntryPoint = "b2SolvePlanes")]
+    public static partial PlaneSolverResult SolvePlanes(Vector2 targetDelta, CollisionPlane* planes, int count);
 
-    [DllImport("box2d", EntryPoint = "b2ClipVector")]
-    public static extern Vector2 ClipVector(Vector2 vector, CollisionPlane* planes, int count);
+    [LibraryImport("box2d", EntryPoint = "b2ClipVector")]
+    public static partial Vector2 ClipVector(Vector2 vector, CollisionPlane* planes, int count);
 }

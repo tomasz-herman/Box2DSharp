@@ -2,7 +2,8 @@ using System.Runtime.InteropServices;
 
 namespace Box2D;
 
-public unsafe struct Timer
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct Timer
 {
     private ulong _start;
 
@@ -27,19 +28,19 @@ public unsafe struct Timer
     /// <summary>
     /// Get the absolute number of system ticks. The value is platform specific.
     /// </summary>
-    [DllImport("box2d", EntryPoint = "b2GetTicks")]
-    public static extern ulong GetTicks();
+    [LibraryImport("box2d", EntryPoint = "b2GetTicks")]
+    public static partial ulong GetTicks();
 
     /// <summary>
     /// Get the milliseconds passed from an initial tick value.
     /// </summary>
-    [DllImport("box2d", EntryPoint = "b2GetMilliseconds")]
-    public static extern float GetMilliseconds(ulong ticks);
+    [LibraryImport("box2d", EntryPoint = "b2GetMilliseconds")]
+    public static partial float GetMilliseconds(ulong ticks);
 
     /// <summary>
     /// Get the milliseconds passed from an initial tick value. Resets the passed in
     /// value to the current tick value.
     /// </summary>
-    [DllImport("box2d", EntryPoint = "b2GetMillisecondsAndReset")]
-    public static extern float GetMillisecondsAndReset(ulong* ticks);
+    [LibraryImport("box2d", EntryPoint = "b2GetMillisecondsAndReset")]
+    public static partial float GetMillisecondsAndReset(ulong* ticks);
 }

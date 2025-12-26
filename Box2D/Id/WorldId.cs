@@ -1,8 +1,10 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Id;
 
 /// <summary>
 /// World id references a world instance. This should be treated as an opaque handle.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct WorldId
 {
     private ushort _index;

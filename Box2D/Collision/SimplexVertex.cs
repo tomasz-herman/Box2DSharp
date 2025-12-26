@@ -1,10 +1,12 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace Box2D.Collision;
 
 /// <summary>
 /// Simplex vertex for debugging the GJK algorithm
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct SimplexVertex
 {
     public Vector2 WA;

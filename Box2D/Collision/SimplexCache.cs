@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Collision;
 
 /// <summary>
@@ -6,6 +7,7 @@ namespace Box2D.Collision;
 /// The distance cache must be initialized to zero on the first call.
 /// Users should generally just zero initialize this structure for each call.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public unsafe struct SimplexCache
 {
     public ushort Count;

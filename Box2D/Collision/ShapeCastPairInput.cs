@@ -7,7 +7,8 @@ namespace Box2D.Collision;
 /// <summary>
 /// Input parameters for b2ShapeCast
 /// </summary>
-public struct ShapeCastPairInput
+[StructLayout(LayoutKind.Sequential)]
+public partial struct ShapeCastPairInput
 {
     public ShapeProxy ProxyA;
     public ShapeProxy ProxyB;
@@ -22,6 +23,6 @@ public struct ShapeCastPairInput
         return ShapeCast(ref this);
     }
     
-    [DllImport("box2d", EntryPoint = "b2ShapeCast")]
-    public static extern CastOutput ShapeCast(ref ShapeCastPairInput input);
+    [LibraryImport("box2d", EntryPoint = "b2ShapeCast")]
+    public static partial CastOutput ShapeCast(ref ShapeCastPairInput input);
 }

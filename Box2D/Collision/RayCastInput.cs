@@ -6,7 +6,8 @@ namespace Box2D.Collision;
 /// <summary>
 /// Low level ray cast input data
 /// </summary>
-public unsafe struct RayCastInput
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct RayCastInput
 {
     public Vector2 Origin;
     public Vector2 Translation;
@@ -17,7 +18,7 @@ public unsafe struct RayCastInput
         return IsValid(ref this);
     }
 
-    [DllImport("box2d", EntryPoint = "b2IsValidRay")]
+    [LibraryImport("box2d", EntryPoint = "b2IsValidRay")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool IsValid(ref RayCastInput input);
+    private static partial bool IsValid(ref RayCastInput input);
 }

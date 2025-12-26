@@ -15,10 +15,12 @@ namespace Box2D.Collision;
 /// Warning: DO NOT fill this out manually, instead use a helper function like
 /// b2MakePolygon or b2MakeBox.
 /// </remarks>
-public struct Polygon
+[StructLayout(LayoutKind.Sequential)]
+public partial struct Polygon
 {
     [InlineArray(8)]
-    public struct VerticesBuffer
+    [StructLayout(LayoutKind.Sequential)]
+    public partial struct VerticesBuffer
     {
         private Vector2 _vertex;
     }
@@ -54,48 +56,48 @@ public struct Polygon
         return ShapeCastPolygon(ref this, ref input);
     }
     
-    [DllImport("box2d", EntryPoint = "b2ComputePolygonMass")]
-    public static extern MassData ComputePolygonMass(ref Polygon shape, float density);
+    [LibraryImport("box2d", EntryPoint = "b2ComputePolygonMass")]
+    public static partial MassData ComputePolygonMass(ref Polygon shape, float density);
     
-    [DllImport("box2d", EntryPoint = "b2ComputePolygonAABB")]
-    public static extern Aabb ComputePolygonAABB(ref Polygon shape, Transform transform);
+    [LibraryImport("box2d", EntryPoint = "b2ComputePolygonAABB")]
+    public static partial Aabb ComputePolygonAABB(ref Polygon shape, Transform transform);
     
-    [DllImport("box2d", EntryPoint = "b2PointInPolygon")]
+    [LibraryImport("box2d", EntryPoint = "b2PointInPolygon")]
     [return: MarshalAs(UnmanagedType.U1)]
-    public static extern bool PointInPolygon(ref Polygon shape, Vector2 point);
+    public static partial bool PointInPolygon(ref Polygon shape, Vector2 point);
     
-    [DllImport("box2d", EntryPoint = "b2RayCastPolygon")]
-    public static extern CastOutput RayCastPolygon(ref Polygon shape, ref RayCastInput input);
+    [LibraryImport("box2d", EntryPoint = "b2RayCastPolygon")]
+    public static partial CastOutput RayCastPolygon(ref Polygon shape, ref RayCastInput input);
 
-    [DllImport("box2d", EntryPoint = "b2ShapeCastPolygon")]
-    public static extern CastOutput ShapeCastPolygon(ref Polygon shape, ref ShapeCastInput input);
+    [LibraryImport("box2d", EntryPoint = "b2ShapeCastPolygon")]
+    public static partial CastOutput ShapeCastPolygon(ref Polygon shape, ref ShapeCastInput input);
 
-    [DllImport("box2d", EntryPoint = "b2MakePolygon")]
-    public static extern Polygon MakePolygon(ref Hull hull, float radius);
+    [LibraryImport("box2d", EntryPoint = "b2MakePolygon")]
+    public static partial Polygon MakePolygon(ref Hull hull, float radius);
 
-    [DllImport("box2d", EntryPoint = "b2MakeOffsetPolygon")]
-    public static extern Polygon MakeOffsetPolygon(ref Hull hull, Vector2 position, Rotation rotation);
+    [LibraryImport("box2d", EntryPoint = "b2MakeOffsetPolygon")]
+    public static partial Polygon MakeOffsetPolygon(ref Hull hull, Vector2 position, Rotation rotation);
 
-    [DllImport("box2d", EntryPoint = "b2MakeOffsetRoundedPolygon")]
-    public static extern Polygon MakeOffsetRoundedPolygon(ref Hull hull, Vector2 position, Rotation rotation,
+    [LibraryImport("box2d", EntryPoint = "b2MakeOffsetRoundedPolygon")]
+    public static partial Polygon MakeOffsetRoundedPolygon(ref Hull hull, Vector2 position, Rotation rotation,
         float radius);
 
-    [DllImport("box2d", EntryPoint = "b2MakeSquare")]
-    public static extern Polygon MakeSquare(float halfWidth);
+    [LibraryImport("box2d", EntryPoint = "b2MakeSquare")]
+    public static partial Polygon MakeSquare(float halfWidth);
 
-    [DllImport("box2d", EntryPoint = "b2MakeBox")]
-    public static extern Polygon MakeBox(float halfWidth, float halfHeight);
+    [LibraryImport("box2d", EntryPoint = "b2MakeBox")]
+    public static partial Polygon MakeBox(float halfWidth, float halfHeight);
 
-    [DllImport("box2d", EntryPoint = "b2MakeRoundedBox")]
-    public static extern Polygon MakeRoundedBox(float halfWidth, float halfHeight, float radius);
+    [LibraryImport("box2d", EntryPoint = "b2MakeRoundedBox")]
+    public static partial Polygon MakeRoundedBox(float halfWidth, float halfHeight, float radius);
 
-    [DllImport("box2d", EntryPoint = "b2MakeOffsetBox")]
-    public static extern Polygon MakeOffsetBox(float halfWidth, float halfHeight, Vector2 center, Rotation rotation);
+    [LibraryImport("box2d", EntryPoint = "b2MakeOffsetBox")]
+    public static partial Polygon MakeOffsetBox(float halfWidth, float halfHeight, Vector2 center, Rotation rotation);
 
-    [DllImport("box2d", EntryPoint = "b2MakeOffsetRoundedBox")]
-    public static extern Polygon MakeOffsetRoundedBox(float halfWidth, float halfHeight, Vector2 center,
+    [LibraryImport("box2d", EntryPoint = "b2MakeOffsetRoundedBox")]
+    public static partial Polygon MakeOffsetRoundedBox(float halfWidth, float halfHeight, Vector2 center,
         Rotation rotation, float radius);
 
-    [DllImport("box2d", EntryPoint = "b2TransformPolygon")]
-    public static extern Polygon TransformPolygon(Transform transform, ref Polygon polygon);
+    [LibraryImport("box2d", EntryPoint = "b2TransformPolygon")]
+    public static partial Polygon TransformPolygon(Transform transform, ref Polygon polygon);
 }

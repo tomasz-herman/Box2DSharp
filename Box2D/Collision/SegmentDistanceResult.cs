@@ -6,7 +6,8 @@ namespace Box2D.Collision;
 /// <summary>
 /// Result of computing the distance between two line segments
 /// </summary>
-public struct SegmentDistanceResult
+[StructLayout(LayoutKind.Sequential)]
+public partial struct SegmentDistanceResult
 {
     public Vector2 Closest1;
     public Vector2 Closest2;
@@ -14,6 +15,6 @@ public struct SegmentDistanceResult
     public float Fraction2;
     public float DistanceSquared;
 
-    [DllImport("box2d", EntryPoint = "b2SegmentDistance")]
-    public static extern SegmentDistanceResult SegmentDistance(Vector2 p1, Vector2 q1, Vector2 p2, Vector2 q2);
+    [LibraryImport("box2d", EntryPoint = "b2SegmentDistance")]
+    public static partial SegmentDistanceResult SegmentDistance(Vector2 p1, Vector2 q1, Vector2 p2, Vector2 q2);
 }

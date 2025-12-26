@@ -4,7 +4,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D.Joints;
 
-public unsafe class FilterJoint : Joint
+public unsafe partial class FilterJoint : Joint
 {
     /// <summary>
     /// Create a filter joint.
@@ -16,8 +16,8 @@ public unsafe class FilterJoint : Joint
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateFilterJoint")]
-    private static extern JointId CreateFilterJoint(WorldId worldId, ref FilterJointDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateFilterJoint")]
+    private static partial JointId CreateFilterJoint(WorldId worldId, ref FilterJointDef def);
 
     #endregion
 }

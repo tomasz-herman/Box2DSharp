@@ -10,6 +10,7 @@ namespace Box2D.Collision;
 /// You may use the totalNormalImpulse to determine if there was an interaction during
 /// the time step.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct ManifoldPoint
 {
     public Vector2 Point;

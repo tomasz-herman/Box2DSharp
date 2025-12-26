@@ -13,7 +13,7 @@ namespace Box2D.Types.Joints;
 /// when the local anchor points coincide in world space.
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct WheelJointDef
+public unsafe partial struct WheelJointDef
 {
     public BodyId BodyIdA;
     public BodyId BodyIdB;
@@ -37,6 +37,6 @@ public unsafe struct WheelJointDef
     public void* UserData;
     public int InternalValue;
 
-    [DllImport("box2d", EntryPoint = "b2DefaultWheelJointDef")]
-    public static extern WheelJointDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultWheelJointDef")]
+    public static partial WheelJointDef Default();
 }

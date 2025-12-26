@@ -7,7 +7,8 @@ namespace Box2D.Types;
 /// The explosion definition is used to configure options for explosions. Explosions
 /// consider shape geometry when computing the impulse.
 /// </summary>
-public struct ExplosionDef
+[StructLayout(LayoutKind.Sequential)]
+public partial struct ExplosionDef
 {
     public ulong MaskBits;
     public Vector2 Position;
@@ -15,6 +16,6 @@ public struct ExplosionDef
     public float Falloff;
     public float ImpulsePerLength;
     
-    [DllImport("box2d", EntryPoint = "b2DefaultExplosionDef")]
-    public static extern ExplosionDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultExplosionDef")]
+    public static partial ExplosionDef Default();
 }

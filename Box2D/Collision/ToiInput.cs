@@ -5,7 +5,8 @@ namespace Box2D.Collision;
 /// <summary>
 /// Input parameters for b2TimeOfImpact
 /// </summary>
-public struct ToiInput
+[StructLayout(LayoutKind.Sequential)]
+public partial struct ToiInput
 {
     public ShapeProxy ProxyA;
     public ShapeProxy ProxyB;
@@ -18,6 +19,6 @@ public struct ToiInput
         return TimeOfImpact(ref this);
     }
 
-    [DllImport("box2d", EntryPoint = "b2TimeOfImpact")]
-    public static extern ToiOutput TimeOfImpact(ref ToiInput input);
+    [LibraryImport("box2d", EntryPoint = "b2TimeOfImpact")]
+    public static partial ToiOutput TimeOfImpact(ref ToiInput input);
 }

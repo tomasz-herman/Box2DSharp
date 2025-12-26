@@ -7,6 +7,7 @@ namespace Box2D.Types;
 /// <summary>
 /// Result from a ray cast
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct RayResult
 {
     public ShapeId ShapeId;

@@ -1,8 +1,10 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Types;
 
 /// <summary>
 /// Profiling data. Times are in milliseconds.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct Profile
 {
     public float Step;

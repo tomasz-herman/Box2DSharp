@@ -10,10 +10,12 @@ namespace Box2D.Collision;
 /// <remarks>
 /// Warning: Do not modify these values directly, instead use b2ComputeHull()
 /// </remarks>
-public unsafe struct Hull
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct Hull
 {
     [InlineArray(8)]
-    public struct VerticesBuffer
+    [StructLayout(LayoutKind.Sequential)]
+    public partial struct VerticesBuffer
     {
         private Vector2 _vertex;
     }
@@ -35,10 +37,10 @@ public unsafe struct Hull
         return ValidateHull(ref this);
     }
 
-    [DllImport("box2d", EntryPoint = "b2ComputeHull")]
-    public static extern Hull ComputeHull(Vector2* points, int count);
+    [LibraryImport("box2d", EntryPoint = "b2ComputeHull")]
+    public static partial Hull ComputeHull(Vector2* points, int count);
 
-    [DllImport("box2d", EntryPoint = "b2ValidateHull")]
+    [LibraryImport("box2d", EntryPoint = "b2ValidateHull")]
     [return: MarshalAs(UnmanagedType.U1)]
-    public static extern bool ValidateHull(ref Hull hull);
+    public static partial bool ValidateHull(ref Hull hull);
 }

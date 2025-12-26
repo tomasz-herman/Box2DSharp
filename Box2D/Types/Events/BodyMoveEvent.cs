@@ -10,6 +10,7 @@ namespace Box2D.Types.Events;
 /// <remarks>
 /// Note: If sleeping is disabled all dynamic and kinematic bodies will trigger move events.
 /// </remarks>
+[StructLayout(LayoutKind.Sequential)]
 public unsafe struct BodyMoveEvent
 {
     public Transform Transform;

@@ -21,7 +21,8 @@ namespace Box2D.Types.Shapes;
 /// Warning: Do not use chain shapes unless you understand the limitations. This is an advanced feature.
 /// </remarks>
 /// </summary>
-public unsafe struct ChainDef
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct ChainDef
 {
     public void* UserData;
     public Vector2* Points;
@@ -35,6 +36,6 @@ public unsafe struct ChainDef
     public bool EnableSensorEvents;
     private int _internalValue;
     
-    [DllImport("box2d", EntryPoint = "b2DefaultChainDef")]
-    public static extern ChainDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultChainDef")]
+    public static partial ChainDef Default();
 }

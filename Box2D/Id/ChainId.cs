@@ -1,8 +1,10 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Id;
 
 /// <summary>
 /// Chain id references a chain instances. This should be treated as an opaque handle.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct ChainId
 {
     private int _index;

@@ -18,7 +18,7 @@ namespace Box2D.Types.Joints;
 /// 2. if you add/remove shapes from a body and recompute the mass, the joints will be broken
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct RevoluteJointDef
+public unsafe partial struct RevoluteJointDef
 {
     public BodyId BodyIdA;
     public BodyId BodyIdB;
@@ -44,6 +44,6 @@ public unsafe struct RevoluteJointDef
     public void* UserData;
     public int InternalValue;
 
-    [DllImport("box2d", EntryPoint = "b2DefaultRevoluteJointDef")]
-    public static extern RevoluteJointDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultRevoluteJointDef")]
+    public static partial RevoluteJointDef Default();
 }

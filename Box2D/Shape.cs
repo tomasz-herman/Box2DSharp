@@ -8,7 +8,7 @@ using Box2D.Math;
 
 namespace Box2D;
 
-public unsafe class Shape : IDisposable
+public unsafe partial class Shape : IDisposable
 {
     private readonly ShapeId _id;
     private bool _disposed;
@@ -474,174 +474,174 @@ public unsafe class Shape : IDisposable
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateCircleShape")]
-    private static extern ShapeId CreateCircleShape(BodyId bodyId, ref ShapeDef def, ref Circle circle);
+    [LibraryImport("box2d", EntryPoint = "b2CreateCircleShape")]
+    private static partial ShapeId CreateCircleShape(BodyId bodyId, ref ShapeDef def, ref Circle circle);
 
-    [DllImport("box2d", EntryPoint = "b2CreateSegmentShape")]
-    private static extern ShapeId CreateSegmentShape(BodyId bodyId, ref ShapeDef def, ref Segment segment);
+    [LibraryImport("box2d", EntryPoint = "b2CreateSegmentShape")]
+    private static partial ShapeId CreateSegmentShape(BodyId bodyId, ref ShapeDef def, ref Segment segment);
 
-    [DllImport("box2d", EntryPoint = "b2CreateCapsuleShape")]
-    private static extern ShapeId CreateCapsuleShape(BodyId bodyId, ref ShapeDef def, ref Capsule capsule);
+    [LibraryImport("box2d", EntryPoint = "b2CreateCapsuleShape")]
+    private static partial ShapeId CreateCapsuleShape(BodyId bodyId, ref ShapeDef def, ref Capsule capsule);
 
-    [DllImport("box2d", EntryPoint = "b2CreatePolygonShape")]
-    private static extern ShapeId CreatePolygonShape(BodyId bodyId, ref ShapeDef def, ref Polygon polygon);
+    [LibraryImport("box2d", EntryPoint = "b2CreatePolygonShape")]
+    private static partial ShapeId CreatePolygonShape(BodyId bodyId, ref ShapeDef def, ref Polygon polygon);
 
-    [DllImport("box2d", EntryPoint = "b2DestroyShape")]
-    private static extern void DestroyShape(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool updateBodyMass);
+    [LibraryImport("box2d", EntryPoint = "b2DestroyShape")]
+    private static partial void DestroyShape(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool updateBodyMass);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_IsValid")]
+    [LibraryImport("box2d", EntryPoint = "b2Shape_IsValid")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Shape_IsValid(ShapeId id);
+    private static partial bool Shape_IsValid(ShapeId id);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetType")]
-    private static extern ShapeType Shape_GetType(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetType")]
+    private static partial ShapeType Shape_GetType(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetBody")]
-    private static extern BodyId Shape_GetBody(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetBody")]
+    private static partial BodyId Shape_GetBody(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetWorld")]
-    private static extern WorldId Shape_GetWorld(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetWorld")]
+    private static partial WorldId Shape_GetWorld(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_IsSensor")]
+    [LibraryImport("box2d", EntryPoint = "b2Shape_IsSensor")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Shape_IsSensor(ShapeId shapeId);
+    private static partial bool Shape_IsSensor(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetUserData")]
-    private static extern void Shape_SetUserData(ShapeId shapeId, void* userData);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetUserData")]
+    private static partial void Shape_SetUserData(ShapeId shapeId, void* userData);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetUserData")]
-    private static extern void* Shape_GetUserData(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetUserData")]
+    private static partial void* Shape_GetUserData(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetDensity")]
-    private static extern void Shape_SetDensity(ShapeId shapeId, float density, [MarshalAs(UnmanagedType.U1)] bool updateBodyMass);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetDensity")]
+    private static partial void Shape_SetDensity(ShapeId shapeId, float density, [MarshalAs(UnmanagedType.U1)] bool updateBodyMass);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetDensity")]
-    private static extern float Shape_GetDensity(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetDensity")]
+    private static partial float Shape_GetDensity(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetFriction")]
-    private static extern void Shape_SetFriction(ShapeId shapeId, float friction);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetFriction")]
+    private static partial void Shape_SetFriction(ShapeId shapeId, float friction);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetFriction")]
-    private static extern float Shape_GetFriction(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetFriction")]
+    private static partial float Shape_GetFriction(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetRestitution")]
-    private static extern void Shape_SetRestitution(ShapeId shapeId, float restitution);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetRestitution")]
+    private static partial void Shape_SetRestitution(ShapeId shapeId, float restitution);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetRestitution")]
-    private static extern float Shape_GetRestitution(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetRestitution")]
+    private static partial float Shape_GetRestitution(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetMaterial")]
-    private static extern void Shape_SetMaterial(ShapeId shapeId, int material);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetMaterial")]
+    private static partial void Shape_SetMaterial(ShapeId shapeId, int material);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetMaterial")]
-    private static extern int Shape_GetMaterial(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetMaterial")]
+    private static partial int Shape_GetMaterial(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetUserMaterial")]
-    private static extern void Shape_SetUserMaterial(ShapeId shapeId, ulong material);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetUserMaterial")]
+    private static partial void Shape_SetUserMaterial(ShapeId shapeId, ulong material);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetUserMaterial")]
-    private static extern ulong Shape_GetUserMaterial(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetUserMaterial")]
+    private static partial ulong Shape_GetUserMaterial(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetSurfaceMaterial")]
-    private static extern void Shape_SetSurfaceMaterial(ShapeId shapeId, ref SurfaceMaterial surfaceMaterial);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetSurfaceMaterial")]
+    private static partial void Shape_SetSurfaceMaterial(ShapeId shapeId, ref SurfaceMaterial surfaceMaterial);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetSurfaceMaterial")]
-    private static extern SurfaceMaterial Shape_GetSurfaceMaterial(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetSurfaceMaterial")]
+    private static partial SurfaceMaterial Shape_GetSurfaceMaterial(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetFilter")]
-    private static extern Filter Shape_GetFilter(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetFilter")]
+    private static partial Filter Shape_GetFilter(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetFilter")]
-    private static extern void Shape_SetFilter(ShapeId shapeId, Filter filter);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetFilter")]
+    private static partial void Shape_SetFilter(ShapeId shapeId, Filter filter);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_EnableSensorEvents")]
-    private static extern void Shape_EnableSensorEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_EnableSensorEvents")]
+    private static partial void Shape_EnableSensorEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_AreSensorEventsEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2Shape_AreSensorEventsEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Shape_AreSensorEventsEnabled(ShapeId shapeId);
+    private static partial bool Shape_AreSensorEventsEnabled(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_EnableContactEvents")]
-    private static extern void Shape_EnableContactEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_EnableContactEvents")]
+    private static partial void Shape_EnableContactEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_AreContactEventsEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2Shape_AreContactEventsEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Shape_AreContactEventsEnabled(ShapeId shapeId);
+    private static partial bool Shape_AreContactEventsEnabled(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_EnablePreSolveEvents")]
-    private static extern void Shape_EnablePreSolveEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_EnablePreSolveEvents")]
+    private static partial void Shape_EnablePreSolveEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_ArePreSolveEventsEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2Shape_ArePreSolveEventsEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Shape_ArePreSolveEventsEnabled(ShapeId shapeId);
+    private static partial bool Shape_ArePreSolveEventsEnabled(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_EnableHitEvents")]
-    private static extern void Shape_EnableHitEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_EnableHitEvents")]
+    private static partial void Shape_EnableHitEvents(ShapeId shapeId, [MarshalAs(UnmanagedType.U1)] bool flag);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_AreHitEventsEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2Shape_AreHitEventsEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Shape_AreHitEventsEnabled(ShapeId shapeId);
+    private static partial bool Shape_AreHitEventsEnabled(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_TestPoint")]
+    [LibraryImport("box2d", EntryPoint = "b2Shape_TestPoint")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool Shape_TestPoint(ShapeId shapeId, Vector2 point);
+    private static partial bool Shape_TestPoint(ShapeId shapeId, Vector2 point);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_RayCast")]
-    private static extern CastOutput Shape_RayCast(ShapeId shapeId, ref RayCastInput input);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_RayCast")]
+    private static partial CastOutput Shape_RayCast(ShapeId shapeId, ref RayCastInput input);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetCircle")]
-    private static extern Circle Shape_GetCircle(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetCircle")]
+    private static partial Circle Shape_GetCircle(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetSegment")]
-    private static extern Segment Shape_GetSegment(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetSegment")]
+    private static partial Segment Shape_GetSegment(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetChainSegment")]
-    private static extern ChainSegment Shape_GetChainSegment(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetChainSegment")]
+    private static partial ChainSegment Shape_GetChainSegment(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetCapsule")]
-    private static extern Capsule Shape_GetCapsule(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetCapsule")]
+    private static partial Capsule Shape_GetCapsule(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetPolygon")]
-    private static extern Polygon Shape_GetPolygon(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetPolygon")]
+    private static partial Polygon Shape_GetPolygon(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetCircle")]
-    private static extern void Shape_SetCircle(ShapeId shapeId, ref Circle circle);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetCircle")]
+    private static partial void Shape_SetCircle(ShapeId shapeId, ref Circle circle);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetCapsule")]
-    private static extern void Shape_SetCapsule(ShapeId shapeId, ref Capsule capsule);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetCapsule")]
+    private static partial void Shape_SetCapsule(ShapeId shapeId, ref Capsule capsule);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetSegment")]
-    private static extern void Shape_SetSegment(ShapeId shapeId, ref Segment segment);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetSegment")]
+    private static partial void Shape_SetSegment(ShapeId shapeId, ref Segment segment);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_SetPolygon")]
-    private static extern void Shape_SetPolygon(ShapeId shapeId, ref Polygon polygon);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_SetPolygon")]
+    private static partial void Shape_SetPolygon(ShapeId shapeId, ref Polygon polygon);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetParentChain")]
-    private static extern ChainId Shape_GetParentChain(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetParentChain")]
+    private static partial ChainId Shape_GetParentChain(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetContactCapacity")]
-    private static extern int Shape_GetContactCapacity(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetContactCapacity")]
+    private static partial int Shape_GetContactCapacity(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetContactData")]
-    private static extern int Shape_GetContactData(ShapeId shapeId, ContactData* contactData, int capacity);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetContactData")]
+    private static partial int Shape_GetContactData(ShapeId shapeId, ContactData* contactData, int capacity);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetSensorCapacity")]
-    private static extern int Shape_GetSensorCapacity(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetSensorCapacity")]
+    private static partial int Shape_GetSensorCapacity(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetSensorOverlaps")]
-    private static extern int Shape_GetSensorOverlaps(ShapeId shapeId, ShapeId* visitorIds, int capacity);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetSensorOverlaps")]
+    private static partial int Shape_GetSensorOverlaps(ShapeId shapeId, ShapeId* visitorIds, int capacity);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetAABB")]
-    private static extern Aabb Shape_GetAabb(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetAABB")]
+    private static partial Aabb Shape_GetAabb(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetMassData")]
-    private static extern MassData Shape_GetMassData(ShapeId shapeId);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetMassData")]
+    private static partial MassData Shape_GetMassData(ShapeId shapeId);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_GetClosestPoint")]
-    private static extern Vector2 Shape_GetClosestPoint(ShapeId shapeId, Vector2 target);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_GetClosestPoint")]
+    private static partial Vector2 Shape_GetClosestPoint(ShapeId shapeId, Vector2 target);
 
-    [DllImport("box2d", EntryPoint = "b2Shape_ApplyWind")]
-    private static extern void Shape_ApplyWind(ShapeId shapeId, Vector2 wind, float drag, float lift, [MarshalAs(UnmanagedType.U1)] bool wake);
+    [LibraryImport("box2d", EntryPoint = "b2Shape_ApplyWind")]
+    private static partial void Shape_ApplyWind(ShapeId shapeId, Vector2 wind, float drag, float lift, [MarshalAs(UnmanagedType.U1)] bool wake);
 
     #endregion
 

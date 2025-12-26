@@ -9,7 +9,8 @@ namespace Box2D.Collision;
 /// which may not coincide with the center of mass. However, to support dynamics we must interpolate the center of mass
 /// position.
 /// </summary>
-public struct Sweep
+[StructLayout(LayoutKind.Sequential)]
+public partial struct Sweep
 {
     public Vector2 LocalCenter;
     public Vector2 C1;
@@ -17,6 +18,6 @@ public struct Sweep
     public Rotation Q1;
     public Rotation Q2;
     
-    [DllImport("box2d", EntryPoint = "b2GetSweepTransform")]
-    public static extern Transform GetSweepTransform(ref Sweep sweep, float time);
+    [LibraryImport("box2d", EntryPoint = "b2GetSweepTransform")]
+    public static partial Transform GetSweepTransform(ref Sweep sweep, float time);
 }

@@ -6,6 +6,7 @@ namespace Box2D.Collision;
 /// <summary>
 /// Low level ray cast or shape-cast output data. Returns a zero fraction and normal in the case of initial overlap.
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct CastOutput
 {
     public Vector2 Normal;

@@ -8,7 +8,8 @@ namespace Box2D.Types.Shapes;
 /// the same shape definition to create multiple shapes.
 /// Must be initialized using b2DefaultShapeDef().
 /// </summary>
-public unsafe struct ShapeDef
+[StructLayout(LayoutKind.Sequential)]
+public unsafe partial struct ShapeDef
 {
     public void* UserData;
     public SurfaceMaterial Material;
@@ -30,6 +31,6 @@ public unsafe struct ShapeDef
     public bool UpdateBodyMass;
     private int _internalValue;
     
-    [DllImport("box2d", EntryPoint = "b2DefaultShapeDef")]
-    public static extern ShapeDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultShapeDef")]
+    public static partial ShapeDef Default();
 }

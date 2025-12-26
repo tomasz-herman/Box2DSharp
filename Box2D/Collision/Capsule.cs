@@ -8,7 +8,8 @@ namespace Box2D.Collision;
 /// A solid capsule can be viewed as two semicircles connected
 /// by a rectangle.
 /// </summary>
-public struct Capsule
+[StructLayout(LayoutKind.Sequential)]
+public partial struct Capsule
 {
     public Vector2 Center1;
     public Vector2 Center2;
@@ -39,19 +40,19 @@ public struct Capsule
         return ShapeCastCapsule(ref this, ref input);
     }
     
-    [DllImport("box2d", EntryPoint = "b2ComputeCapsuleMass")]
-    public static extern MassData ComputeCapsuleMass(ref Capsule shape, float density);
+    [LibraryImport("box2d", EntryPoint = "b2ComputeCapsuleMass")]
+    public static partial MassData ComputeCapsuleMass(ref Capsule shape, float density);
     
-    [DllImport("box2d", EntryPoint = "b2ComputeCapsuleAABB")]
-    public static extern Aabb ComputeCapsuleAABB(ref Capsule shape, Transform transform);
+    [LibraryImport("box2d", EntryPoint = "b2ComputeCapsuleAABB")]
+    public static partial Aabb ComputeCapsuleAABB(ref Capsule shape, Transform transform);
     
-    [DllImport("box2d", EntryPoint = "b2PointInCapsule")]
+    [LibraryImport("box2d", EntryPoint = "b2PointInCapsule")]
     [return: MarshalAs(UnmanagedType.U1)]
-    public static extern bool PointInCapsule(ref Capsule shape, Vector2 point);
+    public static partial bool PointInCapsule(ref Capsule shape, Vector2 point);
     
-    [DllImport("box2d", EntryPoint = "b2RayCastCapsule")]
-    public static extern CastOutput RayCastCapsule(ref Capsule shape, ref RayCastInput input);
+    [LibraryImport("box2d", EntryPoint = "b2RayCastCapsule")]
+    public static partial CastOutput RayCastCapsule(ref Capsule shape, ref RayCastInput input);
 
-    [DllImport("box2d", EntryPoint = "b2ShapeCastCapsule")]
-    public static extern CastOutput ShapeCastCapsule(ref Capsule shape, ref ShapeCastInput input);
+    [LibraryImport("box2d", EntryPoint = "b2ShapeCastCapsule")]
+    public static partial CastOutput ShapeCastCapsule(ref Capsule shape, ref ShapeCastInput input);
 }

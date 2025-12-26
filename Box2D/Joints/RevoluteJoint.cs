@@ -4,7 +4,7 @@ using Box2D.Types.Joints;
 
 namespace Box2D.Joints;
 
-public unsafe class RevoluteJoint : Joint
+public unsafe partial class RevoluteJoint : Joint
 {
     public RevoluteJoint(WorldId worldId, ref RevoluteJointDef def) : base(CreateRevoluteJoint(worldId, ref def))
     {
@@ -182,74 +182,74 @@ public unsafe class RevoluteJoint : Joint
 
     #region NativeFunctions
 
-    [DllImport("box2d", EntryPoint = "b2CreateRevoluteJoint")]
-    private static extern JointId CreateRevoluteJoint(WorldId worldId, ref RevoluteJointDef def);
+    [LibraryImport("box2d", EntryPoint = "b2CreateRevoluteJoint")]
+    private static partial JointId CreateRevoluteJoint(WorldId worldId, ref RevoluteJointDef def);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_EnableSpring")]
-    private static extern void RevoluteJoint_EnableSpring(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableSpring);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_EnableSpring")]
+    private static partial void RevoluteJoint_EnableSpring(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableSpring);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_IsSpringEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_IsSpringEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool RevoluteJoint_IsSpringEnabled(JointId jointId);
+    private static partial bool RevoluteJoint_IsSpringEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_SetSpringHertz")]
-    private static extern void RevoluteJoint_SetSpringHertz(JointId jointId, float hertz);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_SetSpringHertz")]
+    private static partial void RevoluteJoint_SetSpringHertz(JointId jointId, float hertz);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetSpringHertz")]
-    private static extern float RevoluteJoint_GetSpringHertz(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetSpringHertz")]
+    private static partial float RevoluteJoint_GetSpringHertz(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_SetSpringDampingRatio")]
-    private static extern void RevoluteJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_SetSpringDampingRatio")]
+    private static partial void RevoluteJoint_SetSpringDampingRatio(JointId jointId, float dampingRatio);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetSpringDampingRatio")]
-    private static extern float RevoluteJoint_GetSpringDampingRatio(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetSpringDampingRatio")]
+    private static partial float RevoluteJoint_GetSpringDampingRatio(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_SetTargetAngle")]
-    private static extern void RevoluteJoint_SetTargetAngle(JointId jointId, float angle);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_SetTargetAngle")]
+    private static partial void RevoluteJoint_SetTargetAngle(JointId jointId, float angle);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetTargetAngle")]
-    private static extern float RevoluteJoint_GetTargetAngle(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetTargetAngle")]
+    private static partial float RevoluteJoint_GetTargetAngle(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetAngle")]
-    private static extern float RevoluteJoint_GetAngle(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetAngle")]
+    private static partial float RevoluteJoint_GetAngle(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_EnableLimit")]
-    private static extern void RevoluteJoint_EnableLimit(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableLimit);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_EnableLimit")]
+    private static partial void RevoluteJoint_EnableLimit(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableLimit);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_IsLimitEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_IsLimitEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool RevoluteJoint_IsLimitEnabled(JointId jointId);
+    private static partial bool RevoluteJoint_IsLimitEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetLowerLimit")]
-    private static extern float RevoluteJoint_GetLowerLimit(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetLowerLimit")]
+    private static partial float RevoluteJoint_GetLowerLimit(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetUpperLimit")]
-    private static extern float RevoluteJoint_GetUpperLimit(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetUpperLimit")]
+    private static partial float RevoluteJoint_GetUpperLimit(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_SetLimits")]
-    private static extern void RevoluteJoint_SetLimits(JointId jointId, float lower, float upper);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_SetLimits")]
+    private static partial void RevoluteJoint_SetLimits(JointId jointId, float lower, float upper);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_EnableMotor")]
-    private static extern void RevoluteJoint_EnableMotor(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableMotor);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_EnableMotor")]
+    private static partial void RevoluteJoint_EnableMotor(JointId jointId, [MarshalAs(UnmanagedType.U1)] bool enableMotor);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_IsMotorEnabled")]
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_IsMotorEnabled")]
     [return: MarshalAs(UnmanagedType.U1)]
-    private static extern bool RevoluteJoint_IsMotorEnabled(JointId jointId);
+    private static partial bool RevoluteJoint_IsMotorEnabled(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_SetMotorSpeed")]
-    private static extern void RevoluteJoint_SetMotorSpeed(JointId jointId, float motorSpeed);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_SetMotorSpeed")]
+    private static partial void RevoluteJoint_SetMotorSpeed(JointId jointId, float motorSpeed);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetMotorSpeed")]
-    private static extern float RevoluteJoint_GetMotorSpeed(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetMotorSpeed")]
+    private static partial float RevoluteJoint_GetMotorSpeed(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetMotorTorque")]
-    private static extern float RevoluteJoint_GetMotorTorque(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetMotorTorque")]
+    private static partial float RevoluteJoint_GetMotorTorque(JointId jointId);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_SetMaxMotorTorque")]
-    private static extern void RevoluteJoint_SetMaxMotorTorque(JointId jointId, float torque);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_SetMaxMotorTorque")]
+    private static partial void RevoluteJoint_SetMaxMotorTorque(JointId jointId, float torque);
 
-    [DllImport("box2d", EntryPoint = "b2RevoluteJoint_GetMaxMotorTorque")]
-    private static extern float RevoluteJoint_GetMaxMotorTorque(JointId jointId);
+    [LibraryImport("box2d", EntryPoint = "b2RevoluteJoint_GetMaxMotorTorque")]
+    private static partial float RevoluteJoint_GetMaxMotorTorque(JointId jointId);
 
     #endregion
 }

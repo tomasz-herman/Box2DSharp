@@ -7,6 +7,7 @@ namespace Box2D.Collision;
 /// <summary>
 /// These are the collision planes returned from b2World_CollideMover
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct PlaneResult
 {
     public Plane Plane;

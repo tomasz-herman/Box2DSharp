@@ -13,7 +13,7 @@ namespace Box2D.Types.Joints;
 /// when the local anchor points coincide in world space.
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct PrismaticJointDef
+public unsafe partial struct PrismaticJointDef
 {
     public BodyId BodyIdA;
     public BodyId BodyIdB;
@@ -39,6 +39,6 @@ public unsafe struct PrismaticJointDef
     public void* UserData;
     public int InternalValue;
 
-    [DllImport("box2d", EntryPoint = "b2DefaultPrismaticJointDef")]
-    public static extern PrismaticJointDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultPrismaticJointDef")]
+    public static partial PrismaticJointDef Default();
 }

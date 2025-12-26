@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 namespace Box2D.Types.Events;
 
 /// <summary>
@@ -5,6 +6,7 @@ namespace Box2D.Types.Events;
 /// as event arrays after the time step is complete.
 /// Note: this data becomes invalid if bodies are destroyed
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public unsafe struct BodyEvents
 {
     public BodyMoveEvent* MoveEvents;

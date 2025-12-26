@@ -7,13 +7,13 @@ namespace Box2D.Types.Joints;
 /// A filter joint is used to disable collision between two specific bodies.
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct FilterJointDef
+public unsafe partial struct FilterJointDef
 {
     public BodyId BodyIdA;
     public BodyId BodyIdB;
     public void* UserData;
     public int InternalValue;
 
-    [DllImport("box2d", EntryPoint = "b2DefaultFilterJointDef")]
-    public static extern FilterJointDef Default();
+    [LibraryImport("box2d", EntryPoint = "b2DefaultFilterJointDef")]
+    public static partial FilterJointDef Default();
 }
