@@ -2,10 +2,29 @@
 
     <PropertyGroup>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
+        <PackageId>Box2D.NativeBindings</PackageId>
+        <Authors>Tomasz Herman</Authors>
+        <Description>A C# .NET 8+ wrapper for the Box2D physics engine, providing native bindings.</Description>
+        <NoWarn>$(NoWarn);CA2255</NoWarn>
+        <PackageProjectUrl>https://github.com/tomasz-herman/Box2DSharp</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/tomasz-herman/Box2DSharp</RepositoryUrl>
+        <PackageTags>Box2D; Physics; C#; .NET; Native Bindings</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="../runtimes/**" Link="runtimes/%(RecursiveDir)%(Filename)%(Extension)">
+            <PackagePath>runtimes</PackagePath>
+            <Pack>true</Pack>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Include="../README.md" Pack="true" PackagePath="\" />
+        <None Include="../LICENSE" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
 </Project>

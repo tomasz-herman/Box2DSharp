@@ -1,7 +1,6 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Box2D.Id;
-using Box2D.Math;
 using Box2D.Types.Joints;
 
 namespace Box2D;
