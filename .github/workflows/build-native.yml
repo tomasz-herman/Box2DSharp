@@ -1,0 +1,67 @@
+name: Build Native Box2D
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: libbox2d.so
+            cmake_generator: "Unix Makefiles"
+            output_dir: build/src
+            extension: .so
+            rid: linux-x64
+          - os: windows-latest
+            artifact_name: box2d.dll
+            cmake_generator: "Visual Studio 17 2022"
+            output_dir: build/src/Release
+            extension: .dll
+            rid: win-x64
+          - os: macos-latest
+            artifact_name: libbox2d.dylib
+            cmake_generator: "Unix Makefiles"
+            output_dir: build/src
+            extension: .dylib
+            rid: osx-x64
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Dependencies (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libwayland-dev libxkbcommon-dev xorg-dev
+
+    - name: Clone Box2D
+      run: git clone https://github.com/erincatto/box2d.git --branch v3.1.1 --depth 1 native-box2d
+
+    - name: Configure CMake
+      run: |
+        cd native-box2d
+        mkdir build
+        cd build
+        cmake .. -DBOX2D_BUILD_UNIT_TESTS=OFF -DBOX2D_BUILD_TESTBED=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON
+
+    - name: Build
+      run: |
+        cd native-box2d/build
+        cmake --build . --config Release
+
+    - name: Prepare Artifacts
+      shell: bash
+      run: |
+        mkdir -p artifacts/${{ matrix.rid }}/native
+        # Find and copy the library file, handling different locations
+        find native-box2d/build -name "*box2d*${{ matrix.extension }}" -type f -exec cp {} artifacts/${{ matrix.rid }}/native/${{ matrix.artifact_name }} \;
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: box2d-${{ matrix.rid }}
+        path: artifacts/
