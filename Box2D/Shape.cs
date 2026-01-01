@@ -38,6 +38,7 @@ public unsafe partial class Shape : IDisposable
     public Shape(ShapeId id)
     {
         _id = id;
+        _disposed = true; // no ownership, nothing to dispose
     }
 
     /// <summary>
