@@ -10,8 +10,8 @@
         <Authors>Tomasz Herman</Authors>
         <Description>A C# .NET 8+ wrapper for the Box2D physics engine, providing native bindings.</Description>
         <NoWarn>$(NoWarn);CA2255</NoWarn>
-        <PackageProjectUrl>https://github.com/tomasz-herman/Box2DSharp</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/tomasz-herman/Box2DSharp</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/tomasz-herman/Box2D.NativeBindings</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/tomasz-herman/Box2D.NativeBindings</RepositoryUrl>
         <PackageTags>Box2D; Physics; C#; .NET; Native Bindings</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
